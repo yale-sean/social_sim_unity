@@ -10,8 +10,16 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+# Ignored Assets
+/[Aa]ssets/_TerrainAutoUpgrade
+/[Aa]ssets/EasyRoads3D Assets
+/[Aa]ssets/NatureManufacture Assets - Trials Not Full Resolution
+/[Aa]ssets/Windridge City Assets
+/[Aa]ssets/Scenes/Windridge*
+/[Aa]ssets/Scenes/Terrain*
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
-!/[Aa]ssets/**/*.meta
+/[Aa]ssets/**/*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*

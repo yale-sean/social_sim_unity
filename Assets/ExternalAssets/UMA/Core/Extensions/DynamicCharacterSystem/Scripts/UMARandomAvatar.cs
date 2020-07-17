@@ -21,8 +21,8 @@ namespace UMA
 		private DynamicCharacterAvatar RandomAvatar;
 		private GameObject character;
 
-		// Use this for initialization
-		void Start()
+		// Awake is called once the game object is instantiated
+		void Awake()
 		{
 			if (ParentObject == null)
 			{

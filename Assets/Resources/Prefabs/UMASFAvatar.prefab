@@ -1,0 +1,393 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6992781859071613300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6992781859071949926}
+  - component: {fileID: 6992781859066136632}
+  - component: {fileID: 6961782017726516108}
+  - component: {fileID: 8151189806746223775}
+  - component: {fileID: 3452299835933940990}
+  - component: {fileID: 3526618901178606906}
+  - component: {fileID: 8813237827886082251}
+  - component: {fileID: 3996450972161084354}
+  - component: {fileID: 8446713062956132866}
+  - component: {fileID: -4011306516261777419}
+  m_Layer: 0
+  m_Name: UMASFAvatar
+  m_TagString: Actor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6992781859071949926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.196237, y: 5.8708096, z: -0.53275454}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6992781859066136632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcffb0a198605474c8a4d1c67c1515fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  context: {fileID: 0}
+  umaData: {fileID: 0}
+  defaultRendererAsset: {fileID: 0}
+  umaRecipe: {fileID: 0}
+  umaAdditionalRecipes:
+  - {fileID: 11400000, guid: 1f292487d7383514f97c491cadfb0442, type: 2}
+  umaGenerator: {fileID: 0}
+  animationController: {fileID: 9100000, guid: 8041394e507eb3f828fc970830b1bef0, type: 2}
+  CharacterCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  CharacterBegun:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: RandomHead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CharacterDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  CharacterUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  CharacterDnaUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  DelayUnload: 2
+  BundleCheck: 1
+  KeepAnimatorController: 0
+  RecipeUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  hide: 0
+  loadBlendShapes: 0
+  keepAvatar: 0
+  activeRace:
+    name: HumanMale
+  defaultChangeRaceOptions: 8
+  cacheCurrentState: 1
+  rebuildSkeleton: 0
+  preloadWardrobeRecipes:
+    loadDefaultRecipes: 1
+    recipes:
+    - _recipeName: MaleUnderwear
+      _compatibleRaces:
+      - HumanMale
+      - HumanMaleDCS
+    - _recipeName: FemaleUndies
+      _compatibleRaces:
+      - HumanFemaleDCS
+      - HumanFemale
+  raceAnimationControllers:
+    defaultAnimationController: {fileID: 9100000, guid: 8041394e507eb3f828fc970830b1bef0,
+      type: 2}
+    animators: []
+    dynamicallyAddFromResources: 0
+    resourcesFolderPath: 
+  characterColors:
+    _colors:
+    - name: Hair
+      channelMask:
+      - {r: 0.3529412, g: 0.21568629, b: 0.14117648, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      channelAdditiveMask:
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      _name: 
+      _color: {r: 0.3529412, g: 0.21568629, b: 0.14117648, a: 1}
+      _metallicGloss: {r: 0, g: 0, b: 0, a: 0}
+      Raw: 0
+      valuesConverted: 0
+    - name: Eyes
+      channelMask:
+      - {r: 0.28627452, g: 0.40784317, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      channelAdditiveMask:
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      _name: 
+      _color: {r: 0.28627452, g: 0.40784317, b: 1, a: 1}
+      _metallicGloss: {r: 0, g: 0, b: 0, a: 0}
+      Raw: 0
+      valuesConverted: 0
+    - name: Skin
+      channelMask:
+      - {r: 0.9338235, g: 0.9185755, b: 0.88575906, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      channelAdditiveMask:
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      _name: 
+      _color: {r: 0.9632353, g: 0.82158303, b: 0.82158303, a: 1}
+      _metallicGloss: {r: 0, g: 0, b: 0, a: 0}
+      Raw: 0
+      valuesConverted: 0
+    - name: Pants1
+      channelMask:
+      - {r: 0.3529412, g: 0.4156863, b: 0.6392157, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      - {r: 1, g: 1, b: 1, a: 1}
+      channelAdditiveMask:
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      - {r: 0, g: 0, b: 0, a: 0}
+      _name: 
+      _color: {r: 0.3529412, g: 0.4156863, b: 0.6392157, a: 1}
+      _metallicGloss: {r: 0, g: 0, b: 0, a: 0}
+      Raw: 0
+      valuesConverted: 0
+  predefinedDNA:
+    PreloadValues: []
+  loadPathType: 2
+  loadPath: CharacterRecipes
+  loadFilename: 
+  loadString: 
+  loadFileOnStart: 1
+  AtlasResolutionScale: 1
+  defaultLoadOptions: 31
+  savePathType: 0
+  savePath: CharacterRecipes
+  saveFilename: 
+  makeUniqueFilename: 0
+  ensureSharedColors: 0
+  defaultSaveOptions: 15
+  BoundsOffset: {x: 0, y: 0, z: 0}
+  showPlaceholder: 1
+  previewModel: 0
+  customModel: {fileID: 0}
+  customRotation: {x: 0, y: 0, z: 0}
+  previewColor: {r: 1, g: 0, b: 0.80706406, a: 1}
+  _buildCharacterEnabled: 1
+--- !u!114 &6961782017726516108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: SetAvatar
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+--- !u!95 &8151189806746223775
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 2
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &3452299835933940990
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &3526618901178606906
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.6
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
+--- !u!114 &8813237827886082251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104acd889acbfb266baf95c3845d92e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovingTurnSpeed: 180
+  m_StationaryTurnSpeed: 90
+  m_JumpPower: 6
+  m_GravityMultiplier: 2
+  m_RunCycleLegOffset: 0.2
+  m_MoveSpeedMultiplier: 1
+  m_AnimSpeedMultiplier: 1
+  m_GroundCheckDistance: 0.3
+--- !u!114 &3996450972161084354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa6db066f9f400e3b400a765fe9c8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FORCE_MULTIPLIER: 0.4
+  GOAL_FACTOR: 1
+  AGENT_FACTOR: 4
+  WALL_FACTOR: 1
+  radius: 0
+  mass: 0
+  perceptionRadius: 0
+--- !u!195 &8446713062956132866
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!135 &-4011306516261777419
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992781859071613300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}

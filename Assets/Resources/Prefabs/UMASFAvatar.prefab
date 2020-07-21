@@ -351,8 +351,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FORCE_MULTIPLIER: 0.4
   GOAL_FACTOR: 1
-  AGENT_FACTOR: 4
-  WALL_FACTOR: 1
+  AGENT_FACTOR: 1
+  WALL_FACTOR: 3
   radius: 0
   mass: 0
   perceptionRadius: 0

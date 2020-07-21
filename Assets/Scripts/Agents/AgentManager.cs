@@ -16,7 +16,7 @@ public class AgentManager : MonoBehaviour
     private static List<Agent> agents = new List<Agent>();
     private GameObject agentParent;
     public static AgentManager instance;
-    
+
     private const int PATHFINDING_FRAME_SKIP = 25;
     private const float randomNavmeshRadius = 8f;
 
@@ -56,7 +56,7 @@ public class AgentManager : MonoBehaviour
             var agentScript = agent.GetComponent<Agent>();
             agentScript.radius = 0.3f;// Random.Range(0.2f, 0.6f);
             agentScript.mass = 150;
-            agentScript.perceptionRadius = 3;
+            agentScript.perceptionRadius = 2;
 
             agents.Add(agentScript);
             agentsObjs.Add(agent, agentScript);

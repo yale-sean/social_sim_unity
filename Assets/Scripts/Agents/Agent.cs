@@ -33,7 +33,7 @@ public class Agent : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         character = GetComponent<ThirdPersonCharacter>();
         rb.mass = mass;
-        GetComponent<SphereCollider>().radius = perceptionRadius / 2;
+        transform.GetChild(0).GetComponent<SphereCollider>().radius = perceptionRadius / 2;
     }
 
     private void Update()

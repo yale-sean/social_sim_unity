@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6100772774388737539}
   - component: {fileID: 2593552431514531782}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: SocialForcesCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -719,7 +719,7 @@ PrefabInstance:
     - target: {fileID: 328062166564312654, guid: 396bf5b0708a8be5d86e9210d75f4739,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 446645853046850125, guid: 396bf5b0708a8be5d86e9210d75f4739,
         type: 3}
@@ -1190,6 +1190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: warthog
+      objectReference: {fileID: 0}
+    - target: {fileID: 1284576451484544474, guid: 9098771ccba0a8cdd9daa336cb026955,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1284576451484544475, guid: 9098771ccba0a8cdd9daa336cb026955,
         type: 3}

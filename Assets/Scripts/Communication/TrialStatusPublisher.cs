@@ -8,7 +8,7 @@ namespace RosSharp.RosBridgeClient
     public class TrialStatusPublisher : UnityPublisher<MessageTypes.Std.Bool>
     {
         public Transform robotTransform;
-        public Transform targetTransform;
+        public GameObject targetObject;
         public AgentManager pedSpawner;
         public float reachedDestinationThreshold = 0.5f;
         public bool isRunning;
@@ -36,7 +36,8 @@ namespace RosSharp.RosBridgeClient
         {
             if (isRunning)
             {
-                distTarget = Vector3.Distance(robotTransform.position, targetTransform.position);
+                targetObject.SetActive(true);
+                distTarget = Vector3.Distance(robotTransform.position, targetObject.transform.position);
                 distPed = Math.Min(distPed, DistanceToNearestPedestrian());
                 timeElapsed = Time.realtimeSinceStartup - startTime;
 
@@ -100,8 +101,8 @@ namespace RosSharp.RosBridgeClient
                 return;
             robotTransform.position = robotPosition;
             robotTransform.rotation = robotRotation;
-            targetTransform.position = targetPosition;
-            targetTransform.rotation = targetRotation;
+            targetObject.transform.position = targetPosition;
+            targetObject.transform.rotation = targetRotation;
             pedSpawner.agentCount = (int) numPeds;
             pedSpawner.GenerateAgents();
 
@@ -119,6 +120,7 @@ namespace RosSharp.RosBridgeClient
             message.data = isRunning;
             if (isRunning == false)
             {
+                targetObject.SetActive(false);
                 pedSpawner.DestroyAll();
                 distPed = Double.MaxValue;
                 numPeopleCollisions = 0;

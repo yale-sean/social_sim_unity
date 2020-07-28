@@ -3,7 +3,7 @@ using RosSharp.RosBridgeClient;
 
 public class CountCollisions : MonoBehaviour
 {
-    public TrialStatusPublisher trial;
+    public TrialStatusPublisher trialSystem;
 
     private void OnTriggerEnter(Collider hit)
     {
@@ -11,10 +11,10 @@ public class CountCollisions : MonoBehaviour
     		return;
     	
         if (hit.gameObject.tag == "Actor")
-            trial.IncrementPeopleCollisions();
+            trialSystem.IncrementPeopleCollisions();
         else
-            trial.IncrementObjectCollisions();
-        Debug.Log("People Collisions: " + trial.GetPeopleCollisions() 
-        	+ "    Object Collisions: " + trial.GetObjectCollisions());
+            trialSystem.IncrementObjectCollisions();
+        Debug.Log("People Collisions: " + trialSystem.GetPeopleCollisions()
+                + "    Object Collisions: " + trialSystem.GetObjectCollisions());
     }
 }

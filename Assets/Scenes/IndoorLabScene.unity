@@ -716,11 +716,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jackal
       objectReference: {fileID: 0}
+    - target: {fileID: 446645853046850125, guid: 396bf5b0708a8be5d86e9210d75f4739,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bbd33e156792f867999c4ab81af46916, type: 2}
+    - target: {fileID: 1847891693660806304, guid: 396bf5b0708a8be5d86e9210d75f4739,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1847891693660806306, guid: 396bf5b0708a8be5d86e9210d75f4739,
         type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1857862501}
+    - target: {fileID: 1847891693660806306, guid: 396bf5b0708a8be5d86e9210d75f4739,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3705662642139086987, guid: 396bf5b0708a8be5d86e9210d75f4739,
+        type: 3}
+      propertyPath: m_Name
+      value: puck_bottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849224269792992272, guid: 396bf5b0708a8be5d86e9210d75f4739,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc8a0d92810fb16238d1e5b8ec0a6685, type: 2}
+    - target: {fileID: 7320965008344919767, guid: 396bf5b0708a8be5d86e9210d75f4739,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bbd33e156792f867999c4ab81af46916, type: 2}
+    - target: {fileID: 8131534756857607296, guid: 396bf5b0708a8be5d86e9210d75f4739,
+        type: 3}
+      propertyPath: m_Name
+      value: puck_top
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862711843094618861, guid: 396bf5b0708a8be5d86e9210d75f4739,
+        type: 3}
+      propertyPath: m_Name
+      value: puck_middle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 396bf5b0708a8be5d86e9210d75f4739, type: 3}
 --- !u!1 &413834540

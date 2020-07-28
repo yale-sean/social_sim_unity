@@ -2559,7 +2559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /social_sim/is_running
   robotTransform: {fileID: 920619782}
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 1857862502}
   pedSpawner: {fileID: 196671033}
   reachedDestinationThreshold: 0.5
   isRunning: 0
@@ -3697,6 +3697,12 @@ PrefabInstance:
 --- !u!4 &1857862501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
+    type: 3}
+  m_PrefabInstance: {fileID: 1857862500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1857862502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2679650683043107623, guid: 42b86ce3994f54e39ad535eec23bcb46,
     type: 3}
   m_PrefabInstance: {fileID: 1857862500}
   m_PrefabAsset: {fileID: 0}

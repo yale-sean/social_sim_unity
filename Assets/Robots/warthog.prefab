@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Topic: /odom
-  PublishedTransform: {fileID: 0}
+  PublishedTransform: {fileID: 1284576453444306646}
   FrameId: Unity
 --- !u!1 &1284576451539871768
 GameObject:
@@ -730,7 +730,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.56821, y: -0.000000024214387, z: 0}
+  m_ConnectedAnchor: {x: -0.56821, y: 0, z: 0}
   m_UseSpring: 0
   m_Spring:
     spring: 0.5
@@ -1258,7 +1258,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.012977028, z: 0.457367}
+  m_ConnectedAnchor: {x: 0, y: -0.012977, z: 0.457367}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1555,7 +1555,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.012977028, z: -0.457367}
+  m_ConnectedAnchor: {x: 0, y: -0.012977, z: -0.457367}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -3373,7 +3373,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.012977028, z: -0.457367}
+  m_ConnectedAnchor: {x: 0, y: -0.012977, z: -0.457367}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -4069,7 +4069,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.56821, y: -0.000000024214387, z: 0}
+  m_ConnectedAnchor: {x: 0.56821, y: 0, z: 0}
   m_UseSpring: 0
   m_Spring:
     spring: 0.5
@@ -4523,7 +4523,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.012977028, z: 0.457367}
+  m_ConnectedAnchor: {x: 0, y: -0.012977, z: 0.457367}
   m_UseSpring: 0
   m_Spring:
     spring: 0

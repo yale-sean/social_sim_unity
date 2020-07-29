@@ -39,10 +39,7 @@ public class AgentManager : MonoBehaviour
     {
         for (int i = 0; i < agentCount; i++)
         {
-            var randPos = RandomNavmeshLocation(randomNavmeshRadius);
-            //NavMeshHit hit;
-            //NavMesh.SamplePosition(randPos, out hit, 10, NavMesh.AllAreas);
-            randPos = randPos + Vector3.up;
+            var randPos = RandomSpawnLocation() + Vector3.up;
 
             GameObject agent = null;
             agent = Instantiate(agentPrefab, randPos, Quaternion.identity);
@@ -60,7 +57,7 @@ public class AgentManager : MonoBehaviour
 
             agents.Add(agentScript);
             agentsObjs.Add(agent, agentScript);
-            agentsDests.Add(agent, RandomNavmeshLocation(randomNavmeshRadius));
+            agentsDests.Add(agent, RandomSpawnLocation());
         }
 
         StartCoroutine(Run());
@@ -110,7 +107,7 @@ public class AgentManager : MonoBehaviour
     public static void UpdateAgentDestination(GameObject obj)
     {
         agentsDests.Remove(obj);
-        agentsDests.Add(obj, RandomNavmeshLocation(randomNavmeshRadius));
+        agentsDests.Add(obj, RandomSpawnLocation());
     }
 
     public static void RemoveAgent(GameObject obj)
@@ -135,7 +132,8 @@ public class AgentManager : MonoBehaviour
         }
     }
 
-    public static Vector3 RandomNavmeshLocation(float radius) {
+    public static Vector3 RandomNavmeshLocation(float radius)
+    {
          Vector3 randomDirection = Random.insideUnitSphere * radius;
          NavMeshHit hit;
          Vector3 finalPosition = Vector3.zero;
@@ -143,6 +141,16 @@ public class AgentManager : MonoBehaviour
              finalPosition = hit.position;            
          }
          return finalPosition;
+     }
+
+     public static Vector3 RandomSpawnLocation()
+     {
+        Transform trialSystem = GameObject.Find("TrialSystem").transform;
+        int randIdx = Random.Range(0, trialSystem.childCount - 1);
+        var randPos = trialSystem.GetChild(randIdx).position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randPos, out hit, 10, NavMesh.AllAreas);
+        return hit.position;
      }
 
     #endregion

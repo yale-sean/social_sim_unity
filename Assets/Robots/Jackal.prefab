@@ -4032,7 +4032,7 @@ MonoBehaviour:
   lidarGameObj: {fileID: 3426509679196667416}
   FrameId: velodyne
   numDataBlocks: 12
-  rate: 5
+  rate: 10
 --- !u!1 &328062166569889891
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace RosSharp.RosBridgeClient
 {
-    public class PoseArrayPublisher : UnityPublisher<MessageTypes.SocialSimRos.PoseArray>
+    public class PoseArrayPublisher : UnityPublisher<MessageTypes.Geometry.PoseArray>
     {
-        private MessageTypes.SocialSimRos.PoseArray message;
+        private MessageTypes.Geometry.PoseArray message;
         private Transform[] possiblePositions = new Transform[0];
 
         protected override void Start()
@@ -29,14 +29,15 @@ namespace RosSharp.RosBridgeClient
 
         private void InitializeMessage()
         {
-            message = new MessageTypes.SocialSimRos.PoseArray();
+            message = new MessageTypes.Geometry.PoseArray();
         }
 
         private void UpdateMessage()
         {
             possiblePositions = GetComponentsInChildren<Transform>();
             InitializeMessage();
-            message.positions = new MessageTypes.Geometry.Pose[possiblePositions.Length];
+            message.header.stamp = new MessageTypes.Std.Time();
+            message.poses = new MessageTypes.Geometry.Pose[possiblePositions.Length];
 
             int i = 0;
             foreach (Transform pose in possiblePositions)
@@ -44,7 +45,7 @@ namespace RosSharp.RosBridgeClient
                 MessageTypes.Geometry.Pose rosPose = new MessageTypes.Geometry.Pose();
                 rosPose.position = GetGeometryPoint(pose.transform.position.Unity2Ros());
                 rosPose.orientation = GetGeometryQuaternion(pose.transform.rotation.Unity2Ros());
-                message.positions[i++] = rosPose;
+                message.poses[i++] = rosPose;
             }
 
             Publish(message);

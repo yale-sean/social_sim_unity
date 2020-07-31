@@ -694,7 +694,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576451539871768}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7631001c063f69d4495bca90731abab2, type: 3}
   m_Name: 
@@ -730,7 +730,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.56821, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -0.56821, y: -0.000000024214387, z: 0}
   m_UseSpring: 0
   m_Spring:
     spring: 0.5
@@ -1159,10 +1159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284576451938443473}
   - component: {fileID: 1284576451938443498}
-  - component: {fileID: 1284576451938443501}
-  - component: {fileID: 1284576451938443500}
   - component: {fileID: 1284576451938443503}
-  - component: {fileID: 1284576451938443502}
   - component: {fileID: 1284576451938443499}
   m_Layer: 0
   m_Name: front_left_wheel_link
@@ -1199,39 +1196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
---- !u!54 &1284576451938443501
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576451938443472}
-  serializedVersion: 2
-  m_Mass: 15
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1284576451938443500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576451938443472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7631001c063f69d4495bca90731abab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DisplayInertiaGizmo: 0
-  UseUrdfData: 1
-  CenterOfMass: {x: -0, y: 0, z: 0}
-  InertiaTensor: {x: 0.675, y: 0.415625, z: 0.415625}
-  InertiaTensorRotation: {x: 0, y: -0, z: -0, w: 1}
 --- !u!114 &1284576451938443503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,41 +1211,6 @@ MonoBehaviour:
   JointName: front_left_wheel_joint
   EffortLimit: 1000
   VelocityLimit: 1000
---- !u!59 &1284576451938443502
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576451938443472}
-  m_ConnectedBody: {fileID: 1284576451539871766}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.012977, z: 0.457367}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 0
-  m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!146 &1284576451938443499
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1289,11 +1218,11 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576451938443472}
-  m_Center: {x: 0, y: 0.14, z: 0}
-  m_Radius: 0.34
+  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Radius: 0.31
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 5000
+    damper: 500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -1455,11 +1384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576452104588898}
-  - component: {fileID: 1284576452104588927}
-  - component: {fileID: 1284576452104588926}
-  - component: {fileID: 1284576452104588897}
   - component: {fileID: 1284576452104588896}
-  - component: {fileID: 1284576452104588899}
   - component: {fileID: 1284576452104588924}
   m_Layer: 0
   m_Name: rear_left_wheel_link
@@ -1483,52 +1408,6 @@ Transform:
   m_Father: {fileID: 1284576451539871769}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576452104588927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452104588901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBaseLink: 0
---- !u!54 &1284576452104588926
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452104588901}
-  serializedVersion: 2
-  m_Mass: 15
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1284576452104588897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452104588901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7631001c063f69d4495bca90731abab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DisplayInertiaGizmo: 0
-  UseUrdfData: 1
-  CenterOfMass: {x: -0, y: 0, z: 0}
-  InertiaTensor: {x: 0.675, y: 0.415625, z: 0.415625}
-  InertiaTensorRotation: {x: 0, y: -0, z: -0, w: 1}
 --- !u!114 &1284576452104588896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1544,41 +1423,6 @@ MonoBehaviour:
   JointName: rear_left_wheel_joint
   EffortLimit: 1000
   VelocityLimit: 1000
---- !u!59 &1284576452104588899
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452104588901}
-  m_ConnectedBody: {fileID: 1284576451539871766}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.012977, z: -0.457367}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 0
-  m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!146 &1284576452104588924
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -1586,11 +1430,11 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576452104588901}
-  m_Center: {x: 0, y: 0.13, z: 0}
-  m_Radius: 0.34
+  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Radius: 0.31
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 5000
+    damper: 500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -3274,10 +3118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284576452780030956}
   - component: {fileID: 1284576452780030953}
-  - component: {fileID: 1284576452780030952}
-  - component: {fileID: 1284576452780030955}
   - component: {fileID: 1284576452780030954}
-  - component: {fileID: 1284576452780030957}
   - component: {fileID: 1284576452780030950}
   m_Layer: 0
   m_Name: rear_right_wheel_link
@@ -3314,39 +3155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
---- !u!54 &1284576452780030952
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452780030959}
-  serializedVersion: 2
-  m_Mass: 15
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1284576452780030955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452780030959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7631001c063f69d4495bca90731abab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DisplayInertiaGizmo: 0
-  UseUrdfData: 1
-  CenterOfMass: {x: -0, y: 0, z: 0}
-  InertiaTensor: {x: 0.675, y: 0.415625, z: 0.415625}
-  InertiaTensorRotation: {x: 0, y: -0, z: -0, w: 1}
 --- !u!114 &1284576452780030954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3362,41 +3170,6 @@ MonoBehaviour:
   JointName: rear_right_wheel_joint
   EffortLimit: 1000
   VelocityLimit: 1000
---- !u!59 &1284576452780030957
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452780030959}
-  m_ConnectedBody: {fileID: 1284576453007848776}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.012977, z: -0.457367}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 0
-  m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!146 &1284576452780030950
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -3404,11 +3177,11 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576452780030959}
-  m_Center: {x: 0, y: 0.12, z: 0}
-  m_Radius: 0.34
+  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Radius: 0.31
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 5000
+    damper: 500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -4069,7 +3842,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.56821, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0.56821, y: -0.000000024214387, z: 0}
   m_UseSpring: 0
   m_Spring:
     spring: 0.5
@@ -4424,10 +4197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284576453114411203}
   - component: {fileID: 1284576453114411228}
-  - component: {fileID: 1284576453114411231}
-  - component: {fileID: 1284576453114411230}
   - component: {fileID: 1284576453114411201}
-  - component: {fileID: 1284576453114411200}
   - component: {fileID: 1284576453114411229}
   m_Layer: 0
   m_Name: front_right_wheel_link
@@ -4464,39 +4234,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBaseLink: 0
---- !u!54 &1284576453114411231
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576453114411202}
-  serializedVersion: 2
-  m_Mass: 15
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1284576453114411230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576453114411202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7631001c063f69d4495bca90731abab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DisplayInertiaGizmo: 0
-  UseUrdfData: 1
-  CenterOfMass: {x: -0, y: 0, z: 0}
-  InertiaTensor: {x: 0.675, y: 0.415625, z: 0.415625}
-  InertiaTensorRotation: {x: 0, y: -0, z: -0, w: 1}
 --- !u!114 &1284576453114411201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4512,41 +4249,6 @@ MonoBehaviour:
   JointName: front_right_wheel_joint
   EffortLimit: 1000
   VelocityLimit: 1000
---- !u!59 &1284576453114411200
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576453114411202}
-  m_ConnectedBody: {fileID: 1284576453007848776}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: -0.012977, z: 0.457367}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 0
-  m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!146 &1284576453114411229
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -4554,11 +4256,11 @@ WheelCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576453114411202}
-  m_Center: {x: 0, y: 0.12, z: 0}
-  m_Radius: 0.34
+  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Radius: 0.31
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 5000
+    damper: 500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0

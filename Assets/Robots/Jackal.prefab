@@ -3993,7 +3993,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328062166564312654}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 938611d5f671cfe4f9be87c66d865ae1, type: 3}
   m_Name: 
@@ -4032,7 +4032,7 @@ MonoBehaviour:
   lidarGameObj: {fileID: 3426509679196667416}
   FrameId: velodyne
   numDataBlocks: 12
-  rate: 10
+  rate: 5
 --- !u!1 &328062166569889891
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,11 @@ namespace RosSharp.RosBridgeClient
 {
     public class PoseArrayPublisher : UnityPublisher<MessageTypes.Geometry.PoseArray>
     {
+        // Tag for objects that can be robot and agent spawn locations
+        public string SpawnTag = "Spawn";
+
         private MessageTypes.Geometry.PoseArray message;
-        private Transform[] possiblePositions = new Transform[0];
+        private List<Transform> possiblePositions = new List<Transform>();
 
         protected override void Start()
         {
@@ -17,14 +20,10 @@ namespace RosSharp.RosBridgeClient
 
         private void Update()
         {
-            if (this.gameObject.transform.childCount > possiblePositions.Length)
-            {
+            if (possiblePositions.Count != GameObject.FindGameObjectsWithTag(SpawnTag).Length) {
                 UpdateMessage();
             }
-            else
-            {
-                Publish(message);
-            }
+            Publish(message);
         }
 
         private void InitializeMessage()
@@ -34,10 +33,14 @@ namespace RosSharp.RosBridgeClient
 
         private void UpdateMessage()
         {
-            possiblePositions = GetComponentsInChildren<Transform>();
+            possiblePositions.Clear();
+            foreach (GameObject obj in GameObject.FindGameObjectsWithTag(SpawnTag)) {
+                possiblePositions.Add(obj.transform);
+            }
+
             InitializeMessage();
             message.header.stamp = new MessageTypes.Std.Time();
-            message.poses = new MessageTypes.Geometry.Pose[possiblePositions.Length];
+            message.poses = new MessageTypes.Geometry.Pose[possiblePositions.Count];
 
             int i = 0;
             foreach (Transform pose in possiblePositions)

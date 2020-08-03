@@ -16,8 +16,7 @@ namespace UnityStandardAssets._2D
         private Transform m_Player; // Reference to the player's transform.
 
 
-        private void Awake()
-        {
+        private void Awake() {
             // Setting up the reference.
             m_Player = GameObject.FindGameObjectWithTag(FrameTag).transform;
         }

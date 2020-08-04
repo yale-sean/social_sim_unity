@@ -7,6 +7,9 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Agent : MonoBehaviour
 {
+    public AgentManager agentManager = null;
+    public float NavPointRadius = 1.0f;
+
     public float FORCE_MULTIPLIER = 0.6f;
     public float GOAL_FACTOR = 1.0f;
     public float AGENT_FACTOR = 1.0f;
@@ -36,20 +39,13 @@ public class Agent : MonoBehaviour
         transform.GetChild(0).GetComponent<SphereCollider>().radius = perceptionRadius / 2;
     }
 
-    private void Update()
-    {
-        if (path.Count > 1 && Vector3.Distance(transform.position, path[0]) < 1.1f)
-        {
+    private void Update() {
+        if (path.Count > 1 && Vector3.Distance(transform.position, path[0]) < NavPointRadius) {
             path.RemoveAt(0);
-        } else if (path.Count == 1 && Vector3.Distance(transform.position, path[0]) < 2f)
-        {
+        } else if (path.Count == 1 && Vector3.Distance(transform.position, path[0]) < NavPointRadius) {
             path.RemoveAt(0);
-
-            if (path.Count == 0)
-            {
-                //gameObject.SetActive(false);
-                //AgentManager.RemoveAgent(gameObject);
-                AgentManager.UpdateAgentDestination(gameObject);
+            if (path.Count == 0) {
+                agentManager.UpdateAgentDestination(gameObject);
             }
         }
     }
@@ -63,8 +59,6 @@ public class Agent : MonoBehaviour
         if (nma.isOnNavMesh)
             nma.CalculatePath(destination, nmPath);
         path = nmPath.corners.Skip(1).ToList();
-        //Debug.Log(path.Count);
-        //path = new List<Vector3>() { destination };
         //nma.SetDestination(destination);
         nma.enabled = false;
     }
@@ -85,7 +79,7 @@ public class Agent : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (AgentManager.IsAgent(other.gameObject))
+        if (agentManager.IsAgent(other.gameObject))
         {
             perceivedNeighbors.Add(other.gameObject);
         }
@@ -126,10 +120,8 @@ public class Agent : MonoBehaviour
         }
     }
     
-    private Vector3 CalculateGoalForce()
-    {
-        if (path.Count == 0)
-        {
+    private Vector3 CalculateGoalForce() {
+        if (path.Count == 0) {
             return Vector3.zero;
         }
 
@@ -145,12 +137,12 @@ public class Agent : MonoBehaviour
 
         foreach (var n in perceivedNeighbors)
         {
-            if (!AgentManager.IsAgent(n))
+            if (!agentManager.IsAgent(n))
             {
                 continue;
             }
 
-            var neighbor = AgentManager.agentsObjs[n];
+            var neighbor = agentManager.agentsObjs[n];
             var dir = (transform.position - neighbor.transform.position).normalized;
             var overlap = (radius + neighbor.radius) - Vector3.Distance(transform.position, n.transform.position);
 

@@ -67,3 +67,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# UMA
+Assets/ExternalAssets/UMA/InternalDataStore/InEditor.meta

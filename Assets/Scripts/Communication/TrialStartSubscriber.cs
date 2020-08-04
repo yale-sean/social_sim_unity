@@ -48,9 +48,11 @@ namespace RosSharp.RosBridgeClient
             if (message.people.poses.Length <= 0) {
                 Debug.LogError("People positions are empty, cannot start");
             }
+            peoplePositions.Clear();
+            peopleRotations.Clear();
             foreach (MessageTypes.Geometry.Pose pose in message.people.poses) {
-                peoplePositions.Add(GetPosition(pose));
-                peopleRotations.Add(GetRotation(pose));
+                peoplePositions.Add(GetPosition(pose).Ros2Unity());
+                peopleRotations.Add(GetRotation(pose).Ros2Unity());
             }
             timeLimit = message.time_limit;
             isMessageReceived = true;

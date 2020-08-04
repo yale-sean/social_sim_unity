@@ -79,9 +79,11 @@ public abstract class AgentManager : MonoBehaviour
         foreach (var agent in agents) {
             agentsObjs.Remove(agent.gameObject);
         }
-        agents = new List<Agent>();
-        foreach (Transform child in agentParent.transform)
-        {
+        agents.Clear();
+        agentsObjs.Clear();
+        agentsDests.Clear();
+        foreach (Transform child in agentParent.transform) {
+            Debug.Log("Destroying " + child);
             Destroy(child.gameObject);
         }
     }

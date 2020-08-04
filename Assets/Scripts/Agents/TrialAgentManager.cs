@@ -8,13 +8,13 @@ public class TrialAgentManager : AgentManager
 
     public void GenerateAgents(List<Vector3> peoplePositions, List<Quaternion> peopleRotations) {
         for(int i = 0; i < peoplePositions.Count; i++) {
+            Debug.Log("Instantiating agent " + i);
             var randPos = peoplePositions[i] + Vector3.up;
 
             GameObject agent = null;
             agent = Instantiate(agentPrefab, randPos, Quaternion.identity);
             agent.name = "Agent_" + i;
             agent.transform.parent = agentParent.transform;
-            // position = peoplePositions[i];
             agent = agent.transform.GetChild(0).gameObject;
 
             var agentScript = agent.GetComponent<Agent>();

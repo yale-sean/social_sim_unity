@@ -3,7 +3,12 @@ using RosSharp.RosBridgeClient;
 
 public class CountCollisions : MonoBehaviour
 {
-    public TrialStatusPublisher trialSystem;
+    private TrialStatusPublisher trialSystem;
+
+    void Awake() {
+        trialSystem = (TrialStatusPublisher) FindObjectOfType(typeof(TrialStatusPublisher));
+
+    }
 
     private void OnTriggerEnter(Collider hit)
     {

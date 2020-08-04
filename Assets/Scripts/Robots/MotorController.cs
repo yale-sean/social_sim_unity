@@ -18,6 +18,10 @@ namespace RosSharp.RosBridgeClient
         {
             base.Start();
             wheelColl = transform.Find("base_link").Find("chassis_link").Find(wheelName).GetComponent<WheelCollider>();
+            //wheelColl = GameObject.transform.Find(wheelName).GetComponent<WheelCollider>();
+            if (wheelColl == null){
+                Debug.Log(wheelName + " not found.");
+            }
         }
 
         protected override void ReceiveMessage(MessageTypes.Std.Float64 message)

@@ -396,17 +396,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196671031}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd1ede1395561e6faa06101990f34af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentCount: 3
+  PathfindingFrequency: 25
   agentPrefab: {fileID: 2885161576785399288, guid: c77cab936ac4f5d65a4b314b6451038d,
     type: 3}
-  autoStart: 1
-  AgentTag: Agents
-  SpawnTag: Spawn
+  agentParent: {fileID: 0}
 --- !u!4 &205279549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4442144399993495442, guid: 497d72b9ad1ffde429cae859558ff6ad,
@@ -1275,6 +1273,7 @@ GameObject:
   - component: {fileID: 1410308030}
   - component: {fileID: 1410308029}
   - component: {fileID: 1410308028}
+  - component: {fileID: 1410308033}
   m_Layer: 0
   m_Name: TrialSystem
   m_TagString: Untagged
@@ -1336,7 +1335,7 @@ MonoBehaviour:
   Topic: /social_sim/is_running
   robotTransform: {fileID: 920619782}
   targetObject: {fileID: 1857862502}
-  pedSpawner: {fileID: 196671033}
+  pedSpawner: {fileID: 1410308033}
   reachedDestinationThreshold: 0.5
   isRunning: 0
 --- !u!114 &1410308030
@@ -1383,6 +1382,22 @@ MonoBehaviour:
   Serializer: 0
   protocol: 0
   RosBridgeServerUrl: ws://127.0.0.1:9090
+--- !u!114 &1410308033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410308026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f47961e45d37a036957fb8df768b45f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PathfindingFrequency: 25
+  agentPrefab: {fileID: 2885161576785399288, guid: c77cab936ac4f5d65a4b314b6451038d,
+    type: 3}
+  agentParent: {fileID: 1410308026}
 --- !u!1 &1452954072
 GameObject:
   m_ObjectHideFlags: 0

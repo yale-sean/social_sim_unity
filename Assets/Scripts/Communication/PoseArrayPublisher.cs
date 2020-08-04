@@ -10,7 +10,7 @@ namespace RosSharp.RosBridgeClient
         public string SpawnTag = "Spawn";
 
         private MessageTypes.Geometry.PoseArray message;
-        private List<Transform> possiblePositions = new List<Transform>();
+        public List<Transform> possiblePositions = new List<Transform>();
 
         protected override void Start()
         {

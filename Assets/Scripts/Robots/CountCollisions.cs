@@ -14,7 +14,7 @@ public class CountCollisions : MonoBehaviour
             trialSystem.IncrementPeopleCollisions();
         else
             trialSystem.IncrementObjectCollisions();
-        Debug.Log("People Collisions: " + trialSystem.GetPeopleCollisions()
-                + "    Object Collisions: " + trialSystem.GetObjectCollisions());
+        //Debug.Log("People Collisions: " + trialSystem.GetPeopleCollisions()
+        //        + "    Object Collisions: " + trialSystem.GetObjectCollisions());
     }
 }

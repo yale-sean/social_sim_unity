@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace RosSharp.RosBridgeClient
 {
@@ -10,11 +12,17 @@ namespace RosSharp.RosBridgeClient
         private Quaternion robotRotation;
         private Vector3 targetPosition;
         private Quaternion targetRotation;
+        private List<Vector3> peoplePositions;
+        private List<Quaternion> peopleRotations;
 
-        private uint numPeds;
         private double timeLimit;
 
         private bool isMessageReceived;
+
+        void Awake() {
+            peoplePositions = new List<Vector3>();
+            peopleRotations = new List<Quaternion>();
+        }
 
         protected override void Start()
         {
@@ -37,16 +45,24 @@ namespace RosSharp.RosBridgeClient
             robotRotation = GetRotation(message.spawn).Ros2Unity();
             targetPosition = GetPosition(message.target).Ros2Unity();
             targetRotation = GetRotation(message.target).Ros2Unity();
-            numPeds = message.num_peds;
+            if (message.people.poses.Length <= 0) {
+                Debug.LogError("People positions are empty, cannot start");
+            }
+            foreach (MessageTypes.Geometry.Pose pose in message.people.poses) {
+                peoplePositions.Add(GetPosition(pose));
+                peopleRotations.Add(GetRotation(pose));
+            }
             timeLimit = message.time_limit;
             isMessageReceived = true;
         }
 
         private void StartTrial()
         {
+            Debug.Log("Starting Trial");
             GetComponent<TrialStatusPublisher>().StartTrial(robotPosition, robotRotation,
                                                             targetPosition, targetRotation,
-                                                            numPeds, timeLimit);
+                                                            peoplePositions, peopleRotations,
+                                                            timeLimit);
         }
 
         private Vector3 GetPosition(MessageTypes.Geometry.Pose message)

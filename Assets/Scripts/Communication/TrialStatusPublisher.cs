@@ -9,7 +9,7 @@ namespace RosSharp.RosBridgeClient
     {
         public Transform robotTransform;
         public GameObject targetObject;
-        public AgentManager pedSpawner;
+        public TrialAgentManager pedSpawner;
         public float reachedDestinationThreshold = 0.5f;
         public bool isRunning;
 
@@ -95,7 +95,8 @@ namespace RosSharp.RosBridgeClient
 
         public void StartTrial(Vector3 robotPosition, Quaternion robotRotation,
                                Vector3 targetPosition, Quaternion targetRotation,
-                               uint numPeds, double timeLimit)
+                               List<Vector3> peoplePositions, List<Quaternion> peopleRotations,
+                               double timeLimit)
         {
             if (isRunning)
                 return;
@@ -103,8 +104,7 @@ namespace RosSharp.RosBridgeClient
             robotTransform.rotation = robotRotation;
             targetObject.transform.position = targetPosition;
             targetObject.transform.rotation = targetRotation;
-            pedSpawner.agentCount = (int) numPeds;
-            pedSpawner.GenerateAgents();
+            pedSpawner.GenerateAgents(peoplePositions, peopleRotations);
 
             SetRunning(true);
             startTime = Time.realtimeSinceStartup;

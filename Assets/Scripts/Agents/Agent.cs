@@ -7,7 +7,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Agent : MonoBehaviour
 {
-    public AgentManager agentManager = null;
+    public AgentManager agentManager;
     public float NavPointRadius = 1.0f;
 
     public float FORCE_MULTIPLIER = 0.6f;

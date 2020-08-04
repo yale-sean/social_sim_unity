@@ -29,8 +29,8 @@ namespace RosSharp.RosBridgeClient.MessageTypes.SocialSimRos
         //  Robot spawn position
         public Pose target;
         //  Robot target position
-        public uint num_peds;
-        //  Number of pedestrians to spawn
+        public PoseArray people;
+        //  People spawn positions
         public double time_limit;
         //  Time limit for the trial (in seconds)
 
@@ -41,18 +41,18 @@ namespace RosSharp.RosBridgeClient.MessageTypes.SocialSimRos
             this.trial_number = 0;
             this.spawn = new Pose();
             this.target = new Pose();
-            this.num_peds = 0;
+            this.people = new PoseArray();
             this.time_limit = 0.0;
         }
 
-        public TrialStart(Header header, string trial_name, ushort trial_number, Pose spawn, Pose target, uint num_peds, double time_limit)
+        public TrialStart(Header header, string trial_name, ushort trial_number, Pose spawn, Pose target, PoseArray people, double time_limit)
         {
             this.header = header;
             this.trial_name = trial_name;
             this.trial_number = trial_number;
             this.spawn = spawn;
             this.target = target;
-            this.num_peds = num_peds;
+            this.people = people;
             this.time_limit = time_limit;
         }
     }

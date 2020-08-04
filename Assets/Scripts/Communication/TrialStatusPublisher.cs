@@ -46,8 +46,7 @@ namespace RosSharp.RosBridgeClient
                     trialInfo.UpdateInfo(distTarget, distPed,
                         numPeopleCollisions, numObjectCollisions, true, timeElapsed);
                     SetRunning(false);
-                }
-                else if (timeElapsed >= timeLimit)
+                } else if (timeElapsed >= timeLimit)
                 {
                     trialInfo.UpdateInfo(distTarget, distPed,
                         numPeopleCollisions, numObjectCollisions, false, timeElapsed);
@@ -100,10 +99,9 @@ namespace RosSharp.RosBridgeClient
         {
             if (isRunning)
                 return;
-            robotTransform.position = robotPosition;
-            robotTransform.rotation = robotRotation;
-            targetObject.transform.position = targetPosition;
-            targetObject.transform.rotation = targetRotation;
+            robotToNavmesh(robotPosition, robotRotation);
+            targetToNavmesh(targetPosition, targetRotation);
+
             pedSpawner.GenerateAgents(peoplePositions, peopleRotations);
 
             SetRunning(true);
@@ -112,6 +110,24 @@ namespace RosSharp.RosBridgeClient
             Publish(message);
             trialCount++;
             Debug.Log("Started Trial #" + trialCount);
+        }
+
+        private Vector3 sampleNavmesh(Vector3 position, int maxDistance = 10) {
+            UnityEngine.AI.NavMeshHit hit;
+            UnityEngine.AI.NavMesh.SamplePosition(position, out hit, maxDistance, UnityEngine.AI.NavMesh.AllAreas);
+            return hit.position;
+        }
+
+        /// move the robot to the navmesh position closest to the requested robot position
+        private void robotToNavmesh(Vector3 robotPosition, Quaternion robotRotation) {
+            robotTransform.position = sampleNavmesh(robotPosition) + Vector3.up;
+            robotTransform.rotation = robotRotation;
+        }
+
+        /// move the target (goal position) to the navmesh position closest to the requested position
+        private void targetToNavmesh(Vector3 targetPosition, Quaternion targetRotation) {
+            targetObject.transform.position = sampleNavmesh(targetPosition);
+            //targetObject.transform.rotation = targetRotation;
         }
 
         private void SetRunning(bool isRunning)

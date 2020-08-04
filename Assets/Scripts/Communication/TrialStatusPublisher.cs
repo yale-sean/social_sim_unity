@@ -52,6 +52,10 @@ namespace RosSharp.RosBridgeClient
                         numPeopleCollisions, numObjectCollisions, false, timeElapsed);
                     SetRunning(false);
                 }
+
+                // rotate the target
+                targetObject.transform.Rotate(0.0f, 2.0f, 0.0f, Space.World);
+
             }
             Publish(message);
         }

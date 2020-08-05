@@ -372,11 +372,11 @@ GameObject:
   - component: {fileID: 1284576451484544469}
   - component: {fileID: 1284576451484544468}
   - component: {fileID: 1284576451484544471}
-  - component: {fileID: 1284576451484544470}
   - component: {fileID: 1284576451484544473}
+  - component: {fileID: 120684944}
   m_Layer: 0
   m_Name: warthog
-  m_TagString: Untagged
+  m_TagString: Robot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -512,21 +512,6 @@ MonoBehaviour:
   resolutionWidth: 640
   resolutionHeight: 480
   qualityLevel: 50
---- !u!114 &1284576451484544470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576451484544474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938611d5f671cfe4f9be87c66d865ae1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Topic: /laser
-  laserScanReader: {fileID: 0}
-  FrameId: laser
 --- !u!114 &1284576451484544473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,6 +527,23 @@ MonoBehaviour:
   Topic: /odom
   PublishedTransform: {fileID: 1284576453444306646}
   FrameId: Unity
+--- !u!114 &120684944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284576451484544474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf09ecb17efba9459a691ba8a4bda9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Topic: velodyne_packets
+  lidarGameObj: {fileID: 6528621287292046995}
+  FrameId: velodyne
+  numDataBlocks: 12
+  rate: 10
 --- !u!1 &1284576451539871768
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,9 +556,8 @@ GameObject:
   - component: {fileID: 1284576451539871763}
   - component: {fileID: 1284576451539871766}
   - component: {fileID: 1284576451539871762}
-  - component: {fileID: 1284576451539871765}
-  - component: {fileID: 1284576451539871764}
-  - component: {fileID: 1284576451539871767}
+  - component: {fileID: 512321768}
+  - component: {fileID: 512321777}
   m_Layer: 0
   m_Name: left_diff_unit_link
   m_TagString: Untagged
@@ -625,57 +626,21 @@ MonoBehaviour:
   CenterOfMass: {x: 0.05, y: 0.197, z: 0}
   InertiaTensor: {x: 9.135417, y: 9.135417, z: 1.9804165}
   InertiaTensorRotation: {x: 0, y: -0, z: -0, w: 1}
---- !u!114 &1284576451539871765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576451539871768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b6193734b4c8444bcfdf4e9953fe2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JointName: left_diff_unit_joint
-  EffortLimit: 1000
-  VelocityLimit: 1000
---- !u!59 &1284576451539871764
-HingeJoint:
+--- !u!138 &512321768
+FixedJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576451539871768}
   m_ConnectedBody: {fileID: 1284576452811484875}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.56821, y: -0.000000024214387, z: 0}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0.5
-    damper: 100
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 1
-  m_Limits:
-    min: -22.918312
-    max: 22.918312
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1284576451539871767
+--- !u!114 &512321777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -684,12 +649,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1284576451539871768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f37dc21ac85e2b4ca12e377369baae4, type: 3}
+  m_Script: {fileID: 11500000, guid: 074632cab556f5b408839af8574308df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LargeAngleLimitMin: -22.918312
-  LargeAngleLimitMax: 22.918312
-  Tolerance: 5
+  JointName: 
+  EffortLimit: 1000
+  VelocityLimit: 1000
 --- !u!1 &1284576451547845593
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,7 +2877,7 @@ GameObject:
   - component: {fileID: 1712667404}
   m_Layer: 0
   m_Name: chassis_link
-  m_TagString: Untagged
+  m_TagString: RobotFrame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3381,9 +3346,8 @@ GameObject:
   - component: {fileID: 1284576453007848773}
   - component: {fileID: 1284576453007848776}
   - component: {fileID: 1284576453007848772}
-  - component: {fileID: 1284576453007848775}
-  - component: {fileID: 1284576453007848774}
-  - component: {fileID: 1284576453007848777}
+  - component: {fileID: 512321770}
+  - component: {fileID: 512321772}
   m_Layer: 0
   m_Name: right_diff_unit_link
   m_TagString: Untagged
@@ -3452,57 +3416,21 @@ MonoBehaviour:
   CenterOfMass: {x: -0.05, y: 0.197, z: 0}
   InertiaTensor: {x: 9.135417, y: 9.135417, z: 1.9804165}
   InertiaTensorRotation: {x: 0, y: -0, z: -0, w: 1}
---- !u!114 &1284576453007848775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576453007848778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b6193734b4c8444bcfdf4e9953fe2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JointName: right_diff_unit_joint
-  EffortLimit: 1000
-  VelocityLimit: 1000
---- !u!59 &1284576453007848774
-HingeJoint:
+--- !u!138 &512321770
+FixedJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576453007848778}
   m_ConnectedBody: {fileID: 1284576452811484875}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: -1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.56821, y: -0.000000024214387, z: 0}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0.5
-    damper: 100
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 1
-  m_Limits:
-    min: -22.918312
-    max: 22.918312
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &1284576453007848777
+--- !u!114 &512321772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3511,12 +3439,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1284576453007848778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f37dc21ac85e2b4ca12e377369baae4, type: 3}
+  m_Script: {fileID: 11500000, guid: 074632cab556f5b408839af8574308df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LargeAngleLimitMin: -22.918312
-  LargeAngleLimitMax: 22.918312
-  Tolerance: 5
+  JointName: 
+  EffortLimit: 1000
+  VelocityLimit: 1000
 --- !u!1 &1284576453012760880
 GameObject:
   m_ObjectHideFlags: 0

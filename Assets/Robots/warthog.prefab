@@ -1473,7 +1473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /wheel_left_joint_cmd
   TimeStep: 0
-  maxTorque: 10
+  maxTorque: 20
   P: 1
   wheelName: front_left_wheel_link
 --- !u!114 &1284576451484544466
@@ -1490,7 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /wheel_left_joint_cmd
   TimeStep: 0
-  maxTorque: 10
+  maxTorque: 20
   P: 1
   wheelName: rear_left_wheel_link
 --- !u!114 &1284576451484544469
@@ -1507,7 +1507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /wheel_right_joint_cmd
   TimeStep: 0
-  maxTorque: 10
+  maxTorque: 20
   P: 1
   wheelName: front_right_wheel_link
 --- !u!114 &1284576451484544468
@@ -1524,7 +1524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /wheel_right_joint_cmd
   TimeStep: 0
-  maxTorque: 10
+  maxTorque: 20
   P: 1
   wheelName: rear_right_wheel_link
 --- !u!114 &1284576451484544471
@@ -2007,7 +2007,7 @@ WheelCollider:
   m_Mass: 0.4
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.8
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.1
     m_AsymptoteValue: 0.5
@@ -2203,7 +2203,7 @@ WheelCollider:
   m_Mass: 0.4
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.8
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.1
     m_AsymptoteValue: 0.5
@@ -3697,7 +3697,7 @@ WheelCollider:
   m_Mass: 0.4
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.8
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.1
     m_AsymptoteValue: 0.5
@@ -4565,7 +4565,7 @@ WheelCollider:
   m_Mass: 0.4
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.8
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.1
     m_AsymptoteValue: 0.5

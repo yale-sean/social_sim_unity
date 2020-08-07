@@ -1458,7 +1458,7 @@ MonoBehaviour:
   SecondsTimeout: 10
   Serializer: 0
   protocol: 0
-  RosBridgeServerUrl: ws://192.168.0.1:9090
+  RosBridgeServerUrl: ws://127.0.0.1:9090
 --- !u!114 &1284576451484544467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Topic: /odom
-  PublishedTransform: {fileID: 1284576453444306646}
+  PublishedTransform: {fileID: 1284576452811484874}
   FrameId: Unity
 --- !u!114 &120684944
 MonoBehaviour:
@@ -3906,7 +3906,6 @@ GameObject:
   - component: {fileID: 1284576452811484874}
   - component: {fileID: 1284576452811484873}
   - component: {fileID: 1284576452811484875}
-  - component: {fileID: 1284576452811484872}
   - component: {fileID: 1712667404}
   m_Layer: 0
   m_Name: chassis_link
@@ -3969,23 +3968,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1284576452811484872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452811484877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7631001c063f69d4495bca90731abab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DisplayInertiaGizmo: 0
-  UseUrdfData: 1
-  CenterOfMass: {x: -0, y: 0, z: 0}
-  InertiaTensor: {x: 15.937499, y: 15.937499, z: 4.8333335}
-  InertiaTensorRotation: {x: 0, y: -0, z: -0, w: 1}
 --- !u!65 &1712667404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5814,7 +5796,7 @@ PrefabInstance:
     - target: {fileID: 7836557611519928369, guid: d6ec601ec6cdfc03b9a08fc86740f18c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.57000005
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7836557611519928369, guid: d6ec601ec6cdfc03b9a08fc86740f18c,
         type: 3}
@@ -5870,15 +5852,15 @@ PrefabInstance:
     - {fileID: 6066355295940586742, guid: d6ec601ec6cdfc03b9a08fc86740f18c, type: 3}
     - {fileID: 6868413665846823909, guid: d6ec601ec6cdfc03b9a08fc86740f18c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d6ec601ec6cdfc03b9a08fc86740f18c, type: 3}
---- !u!4 &7836557610866080896 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7836557611519928369, guid: d6ec601ec6cdfc03b9a08fc86740f18c,
-    type: 3}
-  m_PrefabInstance: {fileID: 688460977}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6528621287292046995 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6528621286637279778, guid: d6ec601ec6cdfc03b9a08fc86740f18c,
+    type: 3}
+  m_PrefabInstance: {fileID: 688460977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7836557610866080896 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7836557611519928369, guid: d6ec601ec6cdfc03b9a08fc86740f18c,
     type: 3}
   m_PrefabInstance: {fileID: 688460977}
   m_PrefabAsset: {fileID: 0}

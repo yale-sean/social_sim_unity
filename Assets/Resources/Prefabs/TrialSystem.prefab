@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 1686276439412757272}
   - component: {fileID: 1686276439412757273}
   - component: {fileID: 1686276439412757348}
+  - component: {fileID: 275976126}
   m_Layer: 0
   m_Name: TrialSystem
   m_TagString: Untagged
@@ -255,6 +256,26 @@ MonoBehaviour:
     type: 3}
   agentParent: {fileID: 1686276439395889757}
   poseArrayPublisher: {fileID: 1686276439412757274}
+--- !u!114 &275976126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686276439412757279}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375e08b11f51a5b73be8a71fca8a58bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PathfindingFrequency: 25
+  PerceptionRadius: 2
+  agentPrefab: {fileID: 2885161576785399288, guid: c77cab936ac4f5d65a4b314b6451038d,
+    type: 3}
+  agentParent: {fileID: 1686276439395889757}
+  agentCount: 10
+  autoStart: 1
+  SpawnTag: Spawn
 --- !u!1 &3266656251314937955
 GameObject:
   m_ObjectHideFlags: 0

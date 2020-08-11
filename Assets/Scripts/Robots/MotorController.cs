@@ -70,7 +70,11 @@ namespace RosSharp.RosBridgeClient
         }
 
         private float pControl(float targetVel) {
-            return Mathf.Clamp((targetVel - currentSpeed()) * P, -maxTorque, maxTorque);
+            if (targetVel > 0) {
+                return Mathf.Clamp((targetVel - currentSpeed()) * P, 0, maxTorque);
+            } else {
+                return Mathf.Clamp((targetVel - currentSpeed()) * P, -maxTorque, 0);
+            }
         }
 
         public void ApplyLocalPositionToVisuals(WheelCollider collider)

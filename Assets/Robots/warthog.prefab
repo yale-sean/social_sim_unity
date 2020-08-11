@@ -767,7 +767,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1830917677}
-  - component: {fileID: 1830917682}
   - component: {fileID: 1830917681}
   - component: {fileID: 1830917680}
   - component: {fileID: 1830917679}
@@ -798,19 +797,6 @@ Transform:
   m_Father: {fileID: 1284576452817550042}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1830917682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830917676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBaseLink: 0
 --- !u!20 &1830917681
 Camera:
   m_ObjectHideFlags: 0
@@ -1041,7 +1027,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149394898903}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1429,14 +1415,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1284576451484544475}
   - component: {fileID: 1284576451484544472}
-  - component: {fileID: 1284576451484544464}
+  - component: {fileID: 2324983286749767112}
   - component: {fileID: 1284576451484544467}
   - component: {fileID: 1284576451484544466}
   - component: {fileID: 1284576451484544469}
   - component: {fileID: 1284576451484544468}
   - component: {fileID: 1284576451484544471}
-  - component: {fileID: 1284576451484544473}
   - component: {fileID: 120684944}
+  - component: {fileID: 950971463}
   m_Layer: 0
   m_Name: warthog
   m_TagString: Robot
@@ -1473,7 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FilePath: 
---- !u!114 &1284576451484544464
+--- !u!114 &2324983286749767112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1503,8 +1489,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /wheel_left_joint_cmd
   TimeStep: 0
-  maxTorque: 10
-  P: 1
+  maxTorque: 20
+  P: 3
   wheelName: front_left_wheel_link
 --- !u!114 &1284576451484544466
 MonoBehaviour:
@@ -1520,8 +1506,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /wheel_left_joint_cmd
   TimeStep: 0
-  maxTorque: 10
-  P: 1
+  maxTorque: 20
+  P: 3
   wheelName: rear_left_wheel_link
 --- !u!114 &1284576451484544469
 MonoBehaviour:
@@ -1537,8 +1523,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /wheel_right_joint_cmd
   TimeStep: 0
-  maxTorque: 10
-  P: 1
+  maxTorque: 20
+  P: 3
   wheelName: front_right_wheel_link
 --- !u!114 &1284576451484544468
 MonoBehaviour:
@@ -1554,8 +1540,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Topic: /wheel_right_joint_cmd
   TimeStep: 0
-  maxTorque: 10
-  P: 1
+  maxTorque: 20
+  P: 3
   wheelName: rear_right_wheel_link
 --- !u!114 &1284576451484544471
 MonoBehaviour:
@@ -1575,21 +1561,6 @@ MonoBehaviour:
   resolutionWidth: 640
   resolutionHeight: 480
   qualityLevel: 50
---- !u!114 &1284576451484544473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576451484544474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa23b622c60c13f48bdfa74b2e974f20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Topic: /odom
-  PublishedTransform: {fileID: 1284576452811484874}
-  FrameId: Unity
 --- !u!114 &120684944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1607,6 +1578,19 @@ MonoBehaviour:
   FrameId: velodyne
   numDataBlocks: 12
   rate: 10
+--- !u!114 &950971463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284576451484544474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f5e377e16426bde90507e29cea4ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Robot: {fileID: 1284576452811484875}
 --- !u!1 &1284576451539871768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,7 +1600,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576451539871769}
-  - component: {fileID: 1284576451539871763}
   m_Layer: 0
   m_Name: left_diff_unit_link
   m_TagString: Untagged
@@ -1639,19 +1622,6 @@ Transform:
   m_Father: {fileID: 1284576452811484874}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576451539871763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576451539871768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBaseLink: 0
 --- !u!1 &1284576451547845593
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,7 +1981,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576451938443472}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.56821, y: -0.012977, z: 0.457367}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2038,16 +2008,16 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
+    m_ExtremumValue: 1.5
+    m_AsymptoteSlip: 1
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.25
+    m_ExtremumValue: 0.5
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.25
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &1284576452035899998
 GameObject:
@@ -2234,13 +2204,13 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
+    m_ExtremumValue: 1.5
+    m_AsymptoteSlip: 1
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.25
+    m_ExtremumValue: 0.5
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.25
     m_Stiffness: 1
@@ -3141,26 +3111,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576452628033314}
-  - component: {fileID: 1284576452628033230}
-  - component: {fileID: 1284576452628033329}
-  - component: {fileID: 1284576452628033328}
-  - component: {fileID: 1284576452628033331}
-  - component: {fileID: 1284576452628033330}
-  - component: {fileID: 1284576452628033333}
-  - component: {fileID: 1284576452628033332}
-  - component: {fileID: 1284576452628033335}
-  - component: {fileID: 1284576452628033334}
-  - component: {fileID: 1284576452628033337}
-  - component: {fileID: 1284576452628033336}
-  - component: {fileID: 1284576452628033339}
-  - component: {fileID: 1284576452628033338}
-  - component: {fileID: 1284576452628033341}
-  - component: {fileID: 1284576452628033340}
-  - component: {fileID: 1284576452628033343}
-  - component: {fileID: 1284576452628033342}
-  - component: {fileID: 1284576452628033313}
-  - component: {fileID: 1284576452628033312}
-  - component: {fileID: 1284576452628033315}
   m_Layer: 0
   m_Name: Plugins
   m_TagString: Untagged
@@ -3182,301 +3132,6 @@ Transform:
   m_Father: {fileID: 1284576451484544475}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576452628033230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fae53a797b5479c43b9a3aeac7e35e5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1284576452628033329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"front_left_wheel_link\">\n  <selfCollide>false</selfCollide>\n 
-    <mu1>0.5</mu1>\n  <mu2>0.5</mu2>\n  <kp value=\"10000000.0\" />\n  <kd value=\"1.0\"
-    />\n  <fdir1 value=\"1 0 0\" />\n  <material>Gazebo/Grey</material>\n</gazebo>"
---- !u!114 &1284576452628033328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<transmission name=\"front_left_wheel_trans\">\n  <type>transmission_interface/SimpleTransmission</type>\n 
-    <joint name=\"front_left_wheel_joint\">\n    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>\n 
-    </joint>\n  <actuator name=\"front_left_actuator\">\n    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>\n   
-    <mechanicalReduction>1</mechanicalReduction>\n  </actuator>\n</transmission>"
---- !u!114 &1284576452628033331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"front_right_wheel_link\">\n  <selfCollide>false</selfCollide>\n 
-    <mu1>0.5</mu1>\n  <mu2>0.5</mu2>\n  <kp value=\"10000000.0\" />\n  <kd value=\"1.0\"
-    />\n  <fdir1 value=\"1 0 0\" />\n  <material>Gazebo/Grey</material>\n</gazebo>"
---- !u!114 &1284576452628033330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<transmission name=\"front_right_wheel_trans\">\n  <type>transmission_interface/SimpleTransmission</type>\n 
-    <joint name=\"front_right_wheel_joint\">\n    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>\n 
-    </joint>\n  <actuator name=\"front_right_actuator\">\n    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>\n   
-    <mechanicalReduction>1</mechanicalReduction>\n  </actuator>\n</transmission>"
---- !u!114 &1284576452628033333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"rear_left_wheel_link\">\n  <selfCollide>false</selfCollide>\n 
-    <mu1>0.5</mu1>\n  <mu2>0.5</mu2>\n  <kp value=\"10000000.0\" />\n  <kd value=\"1.0\"
-    />\n  <fdir1 value=\"1 0 0\" />\n  <material>Gazebo/Grey</material>\n</gazebo>"
---- !u!114 &1284576452628033332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<transmission name=\"rear_left_wheel_trans\">\n  <type>transmission_interface/SimpleTransmission</type>\n 
-    <joint name=\"rear_left_wheel_joint\">\n    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>\n 
-    </joint>\n  <actuator name=\"rear_left_actuator\">\n    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>\n   
-    <mechanicalReduction>1</mechanicalReduction>\n  </actuator>\n</transmission>"
---- !u!114 &1284576452628033335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"rear_right_wheel_link\">\n  <selfCollide>false</selfCollide>\n 
-    <mu1>0.5</mu1>\n  <mu2>0.5</mu2>\n  <kp value=\"10000000.0\" />\n  <kd value=\"1.0\"
-    />\n  <fdir1 value=\"1 0 0\" />\n  <material>Gazebo/Grey</material>\n</gazebo>"
---- !u!114 &1284576452628033334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<transmission name=\"rear_right_wheel_trans\">\n  <type>transmission_interface/SimpleTransmission</type>\n 
-    <joint name=\"rear_right_wheel_joint\">\n    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>\n 
-    </joint>\n  <actuator name=\"rear_right_actuator\">\n    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>\n   
-    <mechanicalReduction>1</mechanicalReduction>\n  </actuator>\n</transmission>"
---- !u!114 &1284576452628033337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"left_diff_unit_link\">\n  <selfCollide>false</selfCollide>\n 
-    <material>Gazebo/Yellow</material>\n</gazebo>"
---- !u!114 &1284576452628033336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"right_diff_unit_link\">\n  <selfCollide>false</selfCollide>\n 
-    <material>Gazebo/Yellow</material>\n</gazebo>"
---- !u!114 &1284576452628033339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo>\n  <plugin filename=\"libgazebo_ros_control.so\" name=\"gazebo_ros_control\">\n   
-    <robotNamespace>/</robotNamespace>\n    <legacyModeNS>true</legacyModeNS>\n 
-    </plugin>\n</gazebo>"
---- !u!114 &1284576452628033338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo>\n  <plugin filename=\"libwarthog_suspension_plugin.so\" name=\"warthog_suspension_plugin\">\n   
-    <suspension_k>10000</suspension_k>\n    <suspension_b>500</suspension_b>\n  </plugin>\n</gazebo>"
---- !u!114 &1284576452628033341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo>\n  <plugin filename=\"libhector_gazebo_ros_imu.so\" name=\"imu_controller\">\n   
-    <robotNamespace>/</robotNamespace>\n    <updateRate>50.0</updateRate>\n    <bodyName>imu_link</bodyName>\n   
-    <topicName>imu/data</topicName>\n    <accelDrift>0.005 0.005 0.005</accelDrift>\n   
-    <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>\n    <rateDrift>0.005
-    0.005 0.005 </rateDrift>\n    <rateGaussianNoise>0.005 0.005 0.005 </rateGaussianNoise>\n   
-    <headingDrift>0.005</headingDrift>\n    <headingGaussianNoise>0.005</headingGaussianNoise>\n 
-    </plugin>\n</gazebo>"
---- !u!114 &1284576452628033340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo>\n  <plugin filename=\"libhector_gazebo_ros_gps.so\" name=\"gps_controller\">\n   
-    <updateRate>20</updateRate>\n    <robotNamespace>/</robotNamespace>\n    <bodyName>base_link</bodyName>\n   
-    <frameId>base_link</frameId>\n    <topicName>/navsat/fix</topicName>\n    <velocityTopicName>/navsat/vel</velocityTopicName>\n   
-    <referenceLatitude>49.9</referenceLatitude>\n    <referenceLongitude>8.9</referenceLongitude>\n   
-    <referenceHeading>0</referenceHeading>\n    <referenceAltitude>0</referenceAltitude>\n   
-    <drift>0.0001 0.0001 0.0001</drift>\n  </plugin>\n</gazebo>"
---- !u!114 &1284576452628033343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"base_link\">\n  <turnGravityOff>false</turnGravityOff>\n</gazebo>"
---- !u!114 &1284576452628033342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"chassis_link\">\n  <material>Gazebo/Black</material>\n</gazebo>"
---- !u!114 &1284576452628033313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"diff_link\">\n  <material>Gazebo/Grey</material>\n</gazebo>"
---- !u!114 &1284576452628033312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"bulkhead_link\">\n  <material>Gazebo/Black</material>\n</gazebo>"
---- !u!114 &1284576452628033315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452628033317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76add797bdb1d8c4b8276633f6e67167, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PluginText: "<gazebo reference=\"arm_mount_link\">\n  <material>Gazebo/Grey</material>\n</gazebo>"
 --- !u!1 &1284576452656157956
 GameObject:
   m_ObjectHideFlags: 0
@@ -3728,16 +3383,16 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
+    m_ExtremumValue: 1.5
+    m_AsymptoteSlip: 1
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.25
+    m_ExtremumValue: 0.5
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.25
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &1284576452782100503
 GameObject:
@@ -3792,7 +3447,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576452811484874}
-  - component: {fileID: 1284576452811484873}
   - component: {fileID: 1284576452811484875}
   - component: {fileID: 1712667404}
   m_Layer: 0
@@ -3810,7 +3464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576452811484877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025, z: 0}
+  m_LocalPosition: {x: 0, y: -0.307, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1284576452469981697}
@@ -3828,19 +3482,6 @@ Transform:
   m_Father: {fileID: 1284576452817550042}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576452811484873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452811484877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBaseLink: 0
 --- !u!54 &1284576452811484875
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3849,7 +3490,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576452811484877}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 40
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3879,7 +3520,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576452817550042}
-  - component: {fileID: 1284576452817550043}
   m_Layer: 0
   m_Name: base_link
   m_TagString: Untagged
@@ -3894,7 +3534,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284576452817550045}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3905,19 +3545,6 @@ Transform:
   m_Father: {fileID: 1284576451484544475}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576452817550043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576452817550045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBaseLink: 1
 --- !u!1 &1284576452844616069
 GameObject:
   m_ObjectHideFlags: 0
@@ -4248,7 +3875,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576453007848779}
-  - component: {fileID: 1284576453007848773}
   m_Layer: 0
   m_Name: right_diff_unit_link
   m_TagString: Untagged
@@ -4271,19 +3897,6 @@ Transform:
   m_Father: {fileID: 1284576452811484874}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576453007848773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576453007848778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBaseLink: 0
 --- !u!1 &1284576453012760880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4293,7 +3906,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576453012760881}
-  - component: {fileID: 1284576453012760782}
   m_Layer: 0
   m_Name: diff_link
   m_TagString: Untagged
@@ -4317,19 +3929,6 @@ Transform:
   m_Father: {fileID: 1284576452811484874}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576453012760782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576453012760880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBaseLink: 0
 --- !u!1 &1284576453024597876
 GameObject:
   m_ObjectHideFlags: 0
@@ -4597,16 +4196,16 @@ WheelCollider:
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
+    m_ExtremumValue: 1.5
+    m_AsymptoteSlip: 1
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 0.25
+    m_ExtremumValue: 0.5
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.25
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &1284576453135974300
 GameObject:
@@ -5066,7 +4665,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576453345502285}
-  - component: {fileID: 1284576453345502282}
   m_Layer: 0
   m_Name: imu_link
   m_TagString: Untagged
@@ -5090,19 +4688,6 @@ Transform:
   m_Father: {fileID: 1284576452811484874}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576453345502282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576453345502284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBaseLink: 0
 --- !u!1 &1284576453377259076
 GameObject:
   m_ObjectHideFlags: 0
@@ -5112,7 +4697,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576453377259077}
-  - component: {fileID: 1284576453377259074}
   m_Layer: 0
   m_Name: Collisions
   m_TagString: Untagged
@@ -5134,18 +4718,6 @@ Transform:
   m_Father: {fileID: 1284576452817550042}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576453377259074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576453377259076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46398bc5d6905ad429a6d2d973afe002, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1284576453390585788
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,7 +4850,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284576453444306646}
-  - component: {fileID: 1284576453444306647}
   m_Layer: 0
   m_Name: top_chassis_link
   m_TagString: Untagged
@@ -5302,19 +4873,6 @@ Transform:
   m_Father: {fileID: 1284576452811484874}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284576453444306647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284576453444306649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba5fd74d37a6cf4284698624eb8f6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsBaseLink: 0
 --- !u!1 &1284576453468085791
 GameObject:
   m_ObjectHideFlags: 0
@@ -5618,15 +5176,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf58350d58f1c7c0e9c7df3f408cd822, type: 3}
---- !u!4 &543450653333300589 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf58350d58f1c7c0e9c7df3f408cd822,
-    type: 3}
-  m_PrefabInstance: {fileID: 375374470}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919132149394898903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cf58350d58f1c7c0e9c7df3f408cd822,
+    type: 3}
+  m_PrefabInstance: {fileID: 375374470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &543450653333300589 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf58350d58f1c7c0e9c7df3f408cd822,
     type: 3}
   m_PrefabInstance: {fileID: 375374470}
   m_PrefabAsset: {fileID: 0}
@@ -5741,15 +5299,15 @@ PrefabInstance:
     - {fileID: 6066355295940586742, guid: d6ec601ec6cdfc03b9a08fc86740f18c, type: 3}
     - {fileID: 6868413665846823909, guid: d6ec601ec6cdfc03b9a08fc86740f18c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d6ec601ec6cdfc03b9a08fc86740f18c, type: 3}
---- !u!4 &7836557610866080896 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7836557611519928369, guid: d6ec601ec6cdfc03b9a08fc86740f18c,
-    type: 3}
-  m_PrefabInstance: {fileID: 688460977}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6528621287292046995 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6528621286637279778, guid: d6ec601ec6cdfc03b9a08fc86740f18c,
+    type: 3}
+  m_PrefabInstance: {fileID: 688460977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7836557610866080896 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7836557611519928369, guid: d6ec601ec6cdfc03b9a08fc86740f18c,
     type: 3}
   m_PrefabInstance: {fileID: 688460977}
   m_PrefabAsset: {fileID: 0}

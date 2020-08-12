@@ -4030,7 +4030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57f5e377e16426bde90507e29cea4ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Robot: {fileID: 328062165484081475}
+  Robot: {fileID: 328062166962298710}
 --- !u!1 &328062166569889891
 GameObject:
   m_ObjectHideFlags: 0

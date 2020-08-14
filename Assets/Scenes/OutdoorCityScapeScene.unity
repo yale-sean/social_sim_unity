@@ -10466,7 +10466,7 @@ PrefabInstance:
     - target: {fileID: 8274545640640116311, guid: 1df72bad491364d11874baed68233725,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8274545640640116311, guid: 1df72bad491364d11874baed68233725,
         type: 3}
@@ -19493,7 +19493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275976126, guid: 7d73247c6c58d591898785103f91ba42, type: 3}
       propertyPath: agentCount
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 275976126, guid: 7d73247c6c58d591898785103f91ba42, type: 3}
       propertyPath: agentPrefab
@@ -22129,7 +22129,7 @@ Transform:
   m_Children:
   - {fileID: 859534911}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243496267
 GameObject:

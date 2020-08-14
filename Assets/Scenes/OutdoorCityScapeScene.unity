@@ -1701,49 +1701,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68973325}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &74061342
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 74061343}
-  - component: {fileID: 74061344}
-  m_Layer: 0
-  m_Name: Agents
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &74061343
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74061342}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &74061344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74061342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd1ede1395561e6faa06101990f34af4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &74421257
 GameObject:
   m_ObjectHideFlags: 0
@@ -10509,7 +10466,7 @@ PrefabInstance:
     - target: {fileID: 8274545640640116311, guid: 1df72bad491364d11874baed68233725,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8274545640640116311, guid: 1df72bad491364d11874baed68233725,
         type: 3}
@@ -15091,7 +15048,7 @@ Transform:
   - {fileID: 59941623}
   - {fileID: 1458734237}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &831041451
 GameObject:
@@ -19532,8 +19489,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 275976126, guid: 7d73247c6c58d591898785103f91ba42, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 275976126, guid: 7d73247c6c58d591898785103f91ba42, type: 3}
+      propertyPath: agentCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 275976126, guid: 7d73247c6c58d591898785103f91ba42, type: 3}
+      propertyPath: agentPrefab
+      value: 
+      objectReference: {fileID: 1779652455186312154, guid: 3c826d2b8f1c28dbaa1b2f7a29169154,
+        type: 3}
     - target: {fileID: 1686276439412757272, guid: 7d73247c6c58d591898785103f91ba42,
         type: 3}
       propertyPath: robotTransform
@@ -19582,7 +19548,7 @@ PrefabInstance:
     - target: {fileID: 1686276439412757278, guid: 7d73247c6c58d591898785103f91ba42,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1686276439412757278, guid: 7d73247c6c58d591898785103f91ba42,
         type: 3}
@@ -22163,7 +22129,7 @@ Transform:
   m_Children:
   - {fileID: 859534911}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243496267
 GameObject:

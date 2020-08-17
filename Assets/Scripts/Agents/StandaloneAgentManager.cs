@@ -37,7 +37,7 @@ public class StandaloneAgentManager : AgentManager
             var agentScript = agent.GetComponent<Agent>();
             agentScript.agentManager = this;
             agentScript.radius = 0.3f;// Random.Range(0.2f, 0.6f);
-            agentScript.mass = 150;
+            agentScript.mass = 60;
             agentScript.perceptionRadius = PerceptionRadius;
 
             agents.Add(agentScript);

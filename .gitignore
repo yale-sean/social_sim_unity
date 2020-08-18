@@ -69,3 +69,6 @@ crashlytics-build.properties
 
 # UMA
 Assets/ExternalAssets/UMA/InternalDataStore/InEditor.meta
+
+# DS_Store from Mac
+*.DS_Store

@@ -674,7 +674,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 819
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -694,7 +694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430040346}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.86, y: 8.06451, z: 32.96561}
+  m_LocalPosition: {x: -5.74, y: 8.06451, z: 32.96561}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 973403354}
@@ -832,6 +832,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1493443005766324704, guid: fa0733d53dad748eebb3e225800f19b7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2951902614341737132, guid: fa0733d53dad748eebb3e225800f19b7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80767e680be173a0ca807fdf3f98f948, type: 2}
+    - target: {fileID: 4146112161940402567, guid: fa0733d53dad748eebb3e225800f19b7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5e1e778e70ac47a1b02c6491b66aeb6, type: 2}
     - target: {fileID: 5056188738753053865, guid: fa0733d53dad748eebb3e225800f19b7,
         type: 3}
       propertyPath: m_Name

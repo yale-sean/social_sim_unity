@@ -199,7 +199,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686276439412757279}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2d66597cfdd5318ca9cf1ecda490445, type: 3}
   m_Name: 
@@ -270,10 +270,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PathfindingFrequency: 25
   PerceptionRadius: 2
-  agentPrefab: {fileID: 2885161576785399288, guid: c77cab936ac4f5d65a4b314b6451038d,
+  agentPrefab: {fileID: 1779652455186312154, guid: 3c826d2b8f1c28dbaa1b2f7a29169154,
     type: 3}
   agentParent: {fileID: 1686276439395889757}
-  agentCount: 10
+  agentCount: 5
   autoStart: 1
   SpawnTag: Spawn
 --- !u!1 &3266656251314937955

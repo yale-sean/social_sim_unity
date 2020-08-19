@@ -1843,20 +1843,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 275976126, guid: 7d73247c6c58d591898785103f91ba42, type: 3}
-      propertyPath: agentCount
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1686276439412757272, guid: 7d73247c6c58d591898785103f91ba42,
         type: 3}
       propertyPath: robotTransform
       value: 
       objectReference: {fileID: 962573716}
-    - target: {fileID: 1686276439412757275, guid: 7d73247c6c58d591898785103f91ba42,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1686276439412757278, guid: 7d73247c6c58d591898785103f91ba42,
         type: 3}
       propertyPath: m_LocalPosition.x

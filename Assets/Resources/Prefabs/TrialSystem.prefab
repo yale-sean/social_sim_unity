@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PathfindingFrequency: 25
   PerceptionRadius: 2
-  agentPrefab: {fileID: 2885161576785399288, guid: c77cab936ac4f5d65a4b314b6451038d,
+  agentPrefab: {fileID: 1779652455186312154, guid: 3c826d2b8f1c28dbaa1b2f7a29169154,
     type: 3}
   agentParent: {fileID: 1686276439395889757}
   poseArrayPublisher: {fileID: 1686276439412757274}
@@ -270,10 +270,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PathfindingFrequency: 25
   PerceptionRadius: 2
-  agentPrefab: {fileID: 2885161576785399288, guid: c77cab936ac4f5d65a4b314b6451038d,
+  agentPrefab: {fileID: 1779652455186312154, guid: 3c826d2b8f1c28dbaa1b2f7a29169154,
     type: 3}
   agentParent: {fileID: 1686276439395889757}
-  agentCount: 10
+  agentCount: 5
   autoStart: 1
   SpawnTag: Spawn
 --- !u!1 &3266656251314937955

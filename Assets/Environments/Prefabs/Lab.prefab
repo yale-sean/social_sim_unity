@@ -736,6 +736,7 @@ GameObject:
   - component: {fileID: 1067880523372962215}
   - component: {fileID: 8340572817296735473}
   - component: {fileID: 7682443702378628322}
+  - component: {fileID: 729665887707521593}
   m_Layer: 0
   m_Name: Brick1
   m_TagString: Untagged
@@ -804,6 +805,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &729665887707521593
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176125848308309265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.552703, y: 7.568132, z: 0.89646167}
+  m_Center: {x: -2.5021608, y: -0.40947384, z: 0.0611351}
 --- !u!1 &1399613153141777120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,6 +3263,7 @@ GameObject:
   - component: {fileID: 8599285201946228952}
   - component: {fileID: 8185391471779705022}
   - component: {fileID: 3871340935065668545}
+  - component: {fileID: 7471835309989623418}
   m_Layer: 0
   m_Name: Brick2
   m_TagString: Untagged
@@ -3317,6 +3332,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7471835309989623418
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686737205653764577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.5383835, y: 7.568132, z: 0.89646167}
+  m_Center: {x: -2.4950008, y: -0.40947384, z: 0.0611351}
 --- !u!1 &5760225840134524636
 GameObject:
   m_ObjectHideFlags: 0

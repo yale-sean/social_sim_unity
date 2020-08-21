@@ -79,7 +79,7 @@ public class Agent : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (agentManager.IsAgent(other.gameObject))
+        if (agentManager != null && agentManager.IsAgent(other.gameObject))
         {
             perceivedNeighbors.Add(other.gameObject);
         }

@@ -35,6 +35,7 @@ public class StandaloneAgentManager : AgentManager
             agent = agent.transform.GetChild(0).gameObject;
 
             var agentScript = agent.GetComponent<Agent>();
+            agentScript.enabled = true;
             agentScript.agentManager = this;
             agentScript.radius = 0.3f;// Random.Range(0.2f, 0.6f);
             agentScript.mass = 60;

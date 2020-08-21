@@ -26,6 +26,7 @@ public class RocketboxRandomAvatar : MonoBehaviour
         avatarObject = Instantiate(avatarPrefab, transform.position, transform.rotation);
         avatarObject.transform.parent = transform;
         avatarObject.tag = "Actor";
+
         avatarObject.GetComponent<Rigidbody>().inertiaTensor = new Vector3(0.01f, 0.01f, 0.01f);
         avatarObject.GetComponent<Rigidbody>().centerOfMass = Vector3.zero;
 
@@ -44,6 +45,7 @@ public class RocketboxRandomAvatar : MonoBehaviour
         thirdComp.m_GroundCheckDistance = groundCheckDistance;
 
         var agentComp = avatarObject.AddComponent<Agent>();
+        agentComp.enabled = false;
         agentComp.FORCE_MULTIPLIER = forceMultiplier;
         agentComp.GOAL_FACTOR = goalFactor;
         agentComp.AGENT_FACTOR = agentFactor;
@@ -59,8 +61,5 @@ public class RocketboxRandomAvatar : MonoBehaviour
         navComp.autoBraking = true;
         navComp.radius = 1;
         navComp.height = 2;
-
-        avatarObject.GetComponent<Rigidbody>().inertiaTensor = new Vector3(0.01f, 0.01f, 0.01f);
-        avatarObject.GetComponent<Rigidbody>().centerOfMass = Vector3.zero;
     }
 }

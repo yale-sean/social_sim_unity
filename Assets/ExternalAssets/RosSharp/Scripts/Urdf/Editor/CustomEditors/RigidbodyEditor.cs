@@ -27,13 +27,13 @@ namespace RosSharp.Urdf.Editor
         {
             base.OnInspectorGUI();
 
-            Rigidbody _rigidbody = (Rigidbody)target;
-            _rigidbody.centerOfMass = EditorGUILayout.Vector3Field("Center Of Mass", _rigidbody.centerOfMass);
-            _rigidbody.inertiaTensor = EditorGUILayout.Vector3Field("Inertia Tensor", _rigidbody.inertiaTensor);
+            //Rigidbody _rigidbody = (Rigidbody)target;
+            //_rigidbody.centerOfMass = EditorGUILayout.Vector3Field("Center Of Mass", _rigidbody.centerOfMass);
+            //_rigidbody.inertiaTensor = EditorGUILayout.Vector3Field("Inertia Tensor", _rigidbody.inertiaTensor);
 
-            Quaternion inertiaTensorRotation = new Quaternion();
-            inertiaTensorRotation.eulerAngles = EditorGUILayout.Vector3Field("Inertia Tensor Rotation", _rigidbody.inertiaTensorRotation.eulerAngles);
-            _rigidbody.inertiaTensorRotation = inertiaTensorRotation;
+            //Quaternion inertiaTensorRotation = new Quaternion();
+            //inertiaTensorRotation.eulerAngles = EditorGUILayout.Vector3Field("Inertia Tensor Rotation", _rigidbody.inertiaTensorRotation.eulerAngles);
+            //_rigidbody.inertiaTensorRotation = inertiaTensorRotation;
         }
     }
 }

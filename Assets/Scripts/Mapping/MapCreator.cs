@@ -67,13 +67,13 @@ public class MapCreator : MonoBehaviour
             }
         }
 
-
         // compute bottom left corner
         x_min = (int)(-bounds.transform.localScale.x/2+bounds.transform.localPosition.x);
         x_max = (int)(bounds.transform.localScale.x/2+bounds.transform.localPosition.x);
         z_min = (int)(-bounds.transform.localScale.z/2+bounds.transform.localPosition.z);
         z_max = (int)(bounds.transform.localScale.z/2+bounds.transform.localPosition.z);
-        pose = new Vector3(x_min, z_min, 0f);
+        // See TransformExtensions.Unity2Ros
+        pose = new Vector3(z_min, -x_max, 0f);
         steps_per_meter = Mathf.RoundToInt(1/Resolution);
         x_i = x_min * steps_per_meter;
         z_i = z_min * steps_per_meter;
@@ -93,9 +93,10 @@ public class MapCreator : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if (!created) {
-            CheckIntersections();
-            UpdateMessages();
             created = true;
+            CheckIntersections();
+            RotateTextures();
+            UpdateMessages();
         }
     }
 
@@ -118,6 +119,30 @@ public class MapCreator : MonoBehaviour
             }
         }
         Debug.Log("Done Checking Intersections in " + (System.DateTime.Now - start).TotalSeconds + " seconds.");
+    }
+
+    void RotateTextures() {
+        for (int i = 3; i > 0; i--) {
+            short_map = RotateTexture90(short_map);
+            tall_map = RotateTexture90(tall_map);
+        }
+    }
+
+    Texture2D RotateTexture90(Texture2D texture) {
+        Color32[] px = texture.GetPixels32();
+        int w = texture.width;
+        int h = texture.height;
+        Color32[] rot = new Color32[w * h];
+        // 90 degress counter clockwise
+        for (int i = 0; i < w; ++i) {
+            for (int j = 0; j < h; ++j) {
+                rot[i*h+j] = px[(h-j-1)*w+i];
+            }
+        }
+        Texture2D rotated = new Texture2D(h, w);
+        rotated.SetPixels32(rot);
+        rotated.Apply();
+        return rotated;
     }
 
     bool IntersectsMap(GameObject cube) {

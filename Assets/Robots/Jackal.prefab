@@ -467,10 +467,10 @@ WheelCollider:
     m_Stiffness: 2
   m_SidewaysFriction:
     m_ExtremumSlip: 0.1
-    m_ExtremumValue: 0.95
+    m_ExtremumValue: 0.6
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &328062165069229100
 GameObject:
@@ -1117,10 +1117,10 @@ WheelCollider:
     m_Stiffness: 2
   m_SidewaysFriction:
     m_ExtremumSlip: 0.1
-    m_ExtremumValue: 0.95
+    m_ExtremumValue: 0.6
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &328062165207958385
 GameObject:
@@ -3018,7 +3018,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328062166149970726}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b0e460b28ad924d8aaea870b04bfce, type: 3}
   m_Name: 
@@ -4251,10 +4251,10 @@ WheelCollider:
     m_Stiffness: 2
   m_SidewaysFriction:
     m_ExtremumSlip: 0.1
-    m_ExtremumValue: 0.95
+    m_ExtremumValue: 0.6
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &328062166598466041
 GameObject:
@@ -4648,10 +4648,10 @@ WheelCollider:
     m_Stiffness: 2
   m_SidewaysFriction:
     m_ExtremumSlip: 0.1
-    m_ExtremumValue: 0.95
+    m_ExtremumValue: 0.6
     m_AsymptoteSlip: 1
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 2
   m_Enabled: 1
 --- !u!1 &328062166829228012
 GameObject:

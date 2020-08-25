@@ -124,8 +124,11 @@ namespace RosSharp.RosBridgeClient
 
         /// move the robot to the navmesh position closest to the requested robot position
         private void robotToNavmesh(Vector3 robotPosition, Quaternion robotRotation) {
-            robotTransform.position = sampleNavmesh(robotPosition) + Vector3.up;
-            robotTransform.rotation = robotRotation;
+            robotTransform.position = sampleNavmesh(robotPosition);
+            // ensure the robot is always oriented upright
+            Vector3 rot = robotRotation.eulerAngles;
+            rot = new Vector3(0,rot.y,0);
+            robotTransform.rotation = Quaternion.Euler(rot);
         }
 
         /// move the target (goal position) to the navmesh position closest to the requested position

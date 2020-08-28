@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 6137697239942618160}
   - component: {fileID: 4061235924732111128}
   - component: {fileID: 6247214441361531122}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1141,6 +1141,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7101013223946653727, guid: 384db966076be4cfb9010843d7b51779,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e5e1e778e70ac47a1b02c6491b66aeb6, type: 2}
+    - target: {fileID: 8355704691059964724, guid: 384db966076be4cfb9010843d7b51779,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80767e680be173a0ca807fdf3f98f948, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 384db966076be4cfb9010843d7b51779, type: 3}
 --- !u!4 &6126731201217046515 stripped

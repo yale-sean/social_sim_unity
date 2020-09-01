@@ -27,8 +27,11 @@ public class RocketboxRandomAvatar : MonoBehaviour
         avatarObject.transform.parent = transform;
         avatarObject.tag = "Actor";
 
-        avatarObject.GetComponent<Rigidbody>().inertiaTensor = new Vector3(0.01f, 0.01f, 0.01f);
-        avatarObject.GetComponent<Rigidbody>().centerOfMass = Vector3.zero;
+        Rigidbody rb = avatarObject.GetComponent<Rigidbody>();
+
+        rb.inertiaTensor = new Vector3(0.01f, 0.01f, 0.01f);
+        rb.centerOfMass = Vector3.zero;
+        rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
 
         virtualColliderObject = new GameObject();
         virtualColliderObject.transform.position = transform.position;

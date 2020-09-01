@@ -1,4 +1,4 @@
-# Social Sim Ros
+# Social Sim Unity
 
 This is the [Unity](https://unity.com) project for SEAN: Social Environment for Autonomous Navigation
 

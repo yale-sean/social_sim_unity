@@ -47,8 +47,7 @@ public class StandaloneAgentManager : AgentManager
         }
 
         StartCoroutine(CoroutineRunner());
-    }
-    
+    } 
     public override Vector3 SpawnLocation() {
         int idx = Random.Range(0, possiblePositions.Count-1);
         NavMeshHit hit;

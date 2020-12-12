@@ -88,8 +88,8 @@ public class RocketboxRandomAvatar : MonoBehaviour
         thirdComp.m_GroundCheckDistance = groundCheckDistance;
         //thirdComp.m_MoveSpeedMultiplier = 1.0f;
         //thirdComp.m_AnimSpeedMultiplier = 1.0f;
-        thirdComp.m_MovingTurnSpeed = 90;
-        thirdComp.m_StationaryTurnSpeed = 45;
+        thirdComp.m_MovingTurnSpeed = 180;
+        thirdComp.m_StationaryTurnSpeed = 90;
 
         var agentComp = avatarObject.AddComponent<Agent>();
         agentComp.enabled = false;

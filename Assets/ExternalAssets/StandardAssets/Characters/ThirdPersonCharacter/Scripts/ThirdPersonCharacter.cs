@@ -92,17 +92,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 m_ForwardAmount = move.z;
             }
 
-            if (m_ForwardAmount < -0.2) {
-                float turnSpeed;
-                turnSpeed = Input.GetAxis("Horizontal");
-                turnSpeed = Mathf.Clamp(turnSpeed, -0.4f, 0.4f);
-                transform.Rotate(0.0f, -0.6f * turnSpeed, 0.0f);
-                m_Animator.SetFloat("Turn", -0.6f * turnSpeed); 
-            }
-            else
-            {
-                ApplyExtraTurnRotation();
-            }
+            ApplyExtraTurnRotation();
+
+            m_TurnAmount = Mathf.Clamp(m_TurnAmount, -0.5f, 0.5f);
+            m_ForwardAmount = Mathf.Clamp(m_ForwardAmount, -1.0f, 1.0f);
 
             // control and velocity handling is different when grounded and airborne:
             if (m_IsGrounded)

@@ -38,4 +38,8 @@ public class TrialAgentManager : AgentManager
         UnityEngine.AI.NavMesh.SamplePosition(poseArrayPublisher.possiblePositions[idx].position, out hit, 10, UnityEngine.AI.NavMesh.AllAreas);
         return hit.position;
     }
+
+    public override Vector3 DestinationLocation() {
+        return SpawnLocation();
+    }
 }

@@ -30,21 +30,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_Character = GetComponent<ThirdPersonCharacter>();
         }
 
-        private void Update()
-        {
-            if (!m_Jump)
-            {
-                m_Jump = Input.GetButtonDown("Jump");
-            }
-        }
-
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
             // read inputs
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
-            bool crouch = Input.GetKey(KeyCode.C);
+            float h = (Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0);
+            float v = (Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0);
+            bool crouch = false;
 
             // calculate move direction to pass to character
             if (m_Cam != null)
@@ -61,7 +53,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             m_Move = m_Move * 0.5f;
 #if !MOBILE_INPUT
             // walk speed multiplier
-            if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
+            if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 1.4f;
 #endif
 
             // pass all parameters to the character control script

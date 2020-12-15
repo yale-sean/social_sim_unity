@@ -28,22 +28,58 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         Vector3 m_CapsuleCenter;
         CapsuleCollider m_Capsule;
         bool m_Crouching;
+        bool m_Paused;
 
 
         void Start()
         {
-            m_Animator = GetComponent<Animator>();
-            m_Rigidbody = GetComponent<Rigidbody>();
-            m_Capsule = GetComponent<CapsuleCollider>();
-            m_CapsuleHeight = m_Capsule.height;
-            m_CapsuleCenter = m_Capsule.center;
-
-            m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             m_OrigGroundCheckDistance = m_GroundCheckDistance;
+            m_Paused = false;
+        }
+
+        public void pause(bool paused) {
+            m_Paused = paused;
+            m_TurnAmount = 0;
+            m_ForwardAmount = 0;
+        }
+
+        private void getAnimator() {
+            m_Animator = GetComponent<Animator>();
+        }
+
+        private void getRigidbody() {
+            m_Rigidbody= GetComponent<Rigidbody>();
+        }
+
+        private void getCapsule() {
+            m_Capsule = GetComponent<CapsuleCollider>();
         }
 
         public void Move(Vector3 move, bool crouch, bool jump)
         {
+            if (!m_Animator) {
+                //Debug.Log("No Animator");
+                getAnimator();
+                return;
+            }
+            if (!m_Rigidbody) {
+                //Debug.Log("No Rigidbody");
+                getRigidbody();
+                if (m_Rigidbody) {
+                    m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                }
+                return;
+            }
+            if (!m_Capsule) {
+                //Debug.Log("No Capsule");
+                getCapsule();
+                if (m_Capsule) {
+                    m_CapsuleHeight = m_Capsule.height;
+                    m_CapsuleCenter = m_Capsule.center;
+                }
+                return;
+            }
+            //Debug.Log("Moving");
             // convert the world relative moveInput vector into a local-relative
             // turn amount and forward amount required to head in the desired
             // direction.
@@ -51,10 +87,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             move = transform.InverseTransformDirection(move);
             CheckGroundStatus();
             move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-            m_TurnAmount = Mathf.Atan2(move.x, move.z);
-            m_ForwardAmount = move.z;
+            if (!m_Paused) {
+                m_TurnAmount = Mathf.Atan2(move.x, move.z);
+                m_ForwardAmount = move.z;
+            }
 
-            ApplyExtraTurnRotation();
+            if (m_ForwardAmount < -0.2) {
+                float turnSpeed;
+                turnSpeed = Input.GetAxis("Horizontal");
+                turnSpeed = Mathf.Clamp(turnSpeed, -0.4f, 0.4f);
+                transform.Rotate(0.0f, -0.6f * turnSpeed, 0.0f);
+                m_Animator.SetFloat("Turn", -0.6f * turnSpeed); 
+            }
+            else
+            {
+                ApplyExtraTurnRotation();
+            }
 
             // control and velocity handling is different when grounded and airborne:
             if (m_IsGrounded)

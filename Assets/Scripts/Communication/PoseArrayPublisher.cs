@@ -8,6 +8,7 @@ namespace RosSharp.RosBridgeClient
     {
         // Tag for objects that can be robot and agent spawn locations
         public string SpawnTag = "Spawn";
+	    public bool ContinuousPublish = false;
 
         private MessageTypes.Geometry.PoseArray message;
         public List<Transform> possiblePositions = new List<Transform>();
@@ -20,7 +21,7 @@ namespace RosSharp.RosBridgeClient
 
         private void Update()
         {
-            if (possiblePositions.Count != GameObject.FindGameObjectsWithTag(SpawnTag).Length) {
+            if ((possiblePositions.Count != GameObject.FindGameObjectsWithTag(SpawnTag).Length) || ContinuousPublish) {
                 UpdateMessage();
             }
             Publish(message);

@@ -18,6 +18,8 @@ public class MapCreator : MonoBehaviour
     // resolution in meters per pixel
     public float Resolution = 0.1f;
     private int steps_per_meter;
+    // only show the origin
+    public bool TransformOnly = false;
     // publishers
     private RosSharp.RosBridgeClient.TexturePublisher short_map_publisher;
     private RosSharp.RosBridgeClient.TexturePublisher tall_map_publisher;
@@ -86,12 +88,17 @@ public class MapCreator : MonoBehaviour
         tall_map = new Texture2D(w, h, TextureFormat.RGB24, false);
 
         // create the map
-        CreateCubes();
+        if (!TransformOnly) {
+            CreateCubes();
+        }
     }
 
 
     // Update is called once per frame
     void Update() {
+        if (TransformOnly) {
+            return;
+        }
         if (!created) {
             created = true;
             CheckIntersections();
@@ -147,10 +154,12 @@ public class MapCreator : MonoBehaviour
 
     bool IntersectsMap(GameObject cube) {
         foreach (Transform transform in SceneObject.GetComponentsInChildren<Transform>()) {
-            foreach (Collider collider in transform.gameObject.GetComponents<Collider>()) {
-                if (collider == null) { continue; }
-                if (!Intersects(cube.GetComponent<Collider>(), collider)) { continue; }
-                return true;
+            if (transform.gameObject.activeSelf) {
+                foreach (Collider collider in transform.gameObject.GetComponents<Collider>()) {
+                    if (collider == null) { continue; }
+                    if (!Intersects(cube.GetComponent<Collider>(), collider)) { continue; }
+                    return true;
+                }
             }
         }
         return false;

@@ -64,7 +64,7 @@ public abstract class AgentManager : MonoBehaviour
 
     public void UpdateAgentDestination(GameObject obj) {
         agentsDests.Remove(obj);
-        agentsDests.Add(obj, SpawnLocation());
+        agentsDests.Add(obj, DestinationLocation());
     }
 
     public void RemoveAgent(GameObject obj) {
@@ -89,4 +89,6 @@ public abstract class AgentManager : MonoBehaviour
     }
     
     public abstract Vector3 SpawnLocation();
+
+    public abstract Vector3 DestinationLocation();
 }

@@ -10,14 +10,14 @@ public class StandaloneAgentManager : AgentManager
     public bool autoStart = false;
     public string SpawnTag = "Spawn";
     private List<Transform> possiblePositions = new List<Transform>();
-
-    void Awake() {
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag(SpawnTag)) {
-            possiblePositions.Add(obj.transform);
-        }
-    }
+    private List<Transform> possibleDestinations = new List<Transform>();
 
     void Start() {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag(SpawnTag)) {
+            possiblePositions.Add(obj.transform);
+            possibleDestinations.Add(obj.transform);
+        }
+
         if (autoStart)
             GenerateAgents();
     }
@@ -43,15 +43,26 @@ public class StandaloneAgentManager : AgentManager
 
             agents.Add(agentScript);
             agentsObjs.Add(agent, agentScript);
-            agentsDests.Add(agent, SpawnLocation());
+            agentsDests.Add(agent, DestinationLocation());
         }
 
         StartCoroutine(CoroutineRunner());
-    } 
+    }
+    
     public override Vector3 SpawnLocation() {
         int idx = Random.Range(0, possiblePositions.Count-1);
+        Vector3 randPos = possiblePositions[idx].position;
+        possiblePositions.RemoveAt(idx);
         NavMeshHit hit;
-        NavMesh.SamplePosition(possiblePositions[idx].position, out hit, 10, NavMesh.AllAreas);
+        NavMesh.SamplePosition(randPos, out hit, 10, NavMesh.AllAreas);
+        return hit.position;
+    }
+
+    public override Vector3 DestinationLocation() {
+        int idx = Random.Range(0, possibleDestinations.Count-1);
+        Vector3 randPos = possibleDestinations[idx].position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randPos, out hit, 10, NavMesh.AllAreas);
         return hit.position;
     }
 }

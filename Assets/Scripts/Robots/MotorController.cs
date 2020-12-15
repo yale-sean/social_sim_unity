@@ -7,55 +7,62 @@ namespace RosSharp.RosBridgeClient
     public class MotorController : UnitySubscriber<MessageTypes.Std.Float64>
     {
         public float maxTorque = 10.0f;
-        public float P = 100.0f;
+        public float P = 0.1f;
+        public float I = 0.1f;
+        public float D = 0.1f;
+        public float F = 0.25f;
         public string wheelName;
 
         private WheelCollider wheelColl;
-        private double targetVelocity;
-        private bool isMessageReceived;
+        private float targetVelocity = 0;
+
+        private Transform wheelTransform;
+
+        private float integral, lastError;
+
 
         protected override void Start()
         {
             base.Start();
-            wheelColl = transform.Find("base_link").Find("chassis_link").Find(wheelName).GetComponent<WheelCollider>();
-            //wheelColl = GameObject.transform.Find(wheelName).GetComponent<WheelCollider>();
-            if (wheelColl == null){
+
+            wheelTransform = transform.Find("base_link");
+            if(wheelTransform != null) {
+                wheelTransform = wheelTransform.Find("chassis_link").Find(wheelName);
+            }
+            else{
+                //Debug.Log(wheelName + " not found in base_link/chassis_link/. Checking base_footprint/base_link/.");
+                wheelTransform = transform.Find("base_footprint").Find("base_link").Find(wheelName);
+            }
+            if (wheelTransform == null){
                 Debug.Log(wheelName + " not found.");
+            }
+            else {
+                wheelColl = wheelTransform.GetComponent<WheelCollider>();
             }
         }
 
         protected override void ReceiveMessage(MessageTypes.Std.Float64 message)
         {
-            targetVelocity = message.data;
-            isMessageReceived = true;
-        }
-
-
-        private void Update()
-        {
-            if (isMessageReceived) {
-                ProcessMessage();
-            }
+            targetVelocity = targetSpeed(message.data);
         }
 
         private void FixedUpdate()
         {
             ApplyLocalPositionToVisuals(wheelColl);
-        }
 
-        private void ProcessMessage()
-        {
-            //wheelColl.brakeTorque = 0.3f;
-            if (Mathf.Approximately((float)targetVelocity, 0.0f)) {
+            //torkWheel.motorTorque = Pid(targetVelocity, torkWheel.velocity, Time.deltaTime);
+            if (targetVelocity == 0.0f) {
                 //Debug.Log(wheelName + " msg (braking): " + targetVelocity);
-                wheelColl.brakeTorque = 0.1f;
+                wheelColl.brakeTorque = 10.0f;
                 wheelColl.motorTorque = 0.0f;
             } else {
                 wheelColl.brakeTorque = 0.0f;
-                wheelColl.motorTorque = pControl(targetSpeed(targetVelocity));
-                //Debug.Log(wheelName + ": " + wheelColl.motorTorque + "       RPM: " + wheelColl.rpm);
+                // diff_drive_controller output is in rad/s, compute wheel velocity in rad/sec as well
+                float curSpeed = wheelColl.rpm/60 * 2 * Mathf.PI;
+                float torque = F * Pid(targetVelocity, curSpeed, Time.deltaTime);
+                //Debug.Log(wheelName + "| torque: '" + torque + "' RPM: " + wheelColl.rpm + ", current vel: '" + curSpeed + "', target vel: '" + targetVelocity + "'");
+                wheelColl.motorTorque = torque;
             }
-            isMessageReceived = false;
         }
 
         private float targetSpeed(double targetVel) {
@@ -63,18 +70,6 @@ namespace RosSharp.RosBridgeClient
                 return 0.0f;
             }
             return (float) targetVel;
-        }
-
-        float currentSpeed() {
-            return wheelColl.rpm * 2 * Mathf.PI / 60 * wheelColl.radius;
-        }
-
-        private float pControl(float targetVel) {
-            if (targetVel > 0) {
-                return Mathf.Clamp((targetVel - currentSpeed()) * P, 0, maxTorque);
-            } else {
-                return Mathf.Clamp((targetVel - currentSpeed()) * P, -maxTorque, 0);
-            }
         }
 
         public void ApplyLocalPositionToVisuals(WheelCollider collider)
@@ -91,6 +86,14 @@ namespace RosSharp.RosBridgeClient
          
             visualWheel.transform.position = position;
             visualWheel.transform.rotation = rotation;
+        }
+
+        private float Pid(float setpoint, float actual, float timeFrame) {
+            float present = setpoint - actual;
+            integral += present * timeFrame;
+            float deriv = (present - lastError) / timeFrame;
+            lastError = present;
+            return present * P + integral * I + deriv * D;
         }
     }
 }

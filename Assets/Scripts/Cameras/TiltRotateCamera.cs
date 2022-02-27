@@ -17,15 +17,15 @@ public class TiltRotateCamera : MonoBehaviour
         {
             tiltAngle -= 360.0f;
         }
-        
+
         if (enableTilt)
         {
-            if (Input.GetKey(KeyCode.UpArrow) && tiltAngle > -75.0f)
+            if (Input.GetKey(KeyCode.W) && tiltAngle > -75.0f)
             {
                 transform.Rotate(Vector3.left * tiltSpeed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.DownArrow) && tiltAngle < 45.0f)
+            if (Input.GetKey(KeyCode.S) && tiltAngle < 45.0f)
             {
                 transform.Rotate(Vector3.right * tiltSpeed * Time.deltaTime);
             }
@@ -33,15 +33,21 @@ public class TiltRotateCamera : MonoBehaviour
 
         if (enableRotation)
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.D))
             {
                 transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.A))
             {
                 transform.Rotate(Vector3.down * rotationSpeed * Time.deltaTime);
             }
+        }
+
+        // reset rotation
+        if (Input.GetKey(KeyCode.X))
+        {
+            transform.localRotation = Quaternion.Euler(Vector3.zero);
         }
     }
 }

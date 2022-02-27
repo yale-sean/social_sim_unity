@@ -1,87 +1,91 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Robotics.ROSTCPConnector;
+using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 
-namespace RosSharp.RosBridgeClient
+public class TrialStartSubscriber : MonoBehaviour
 {
-    public class TrialStartSubscriber : UnitySubscriber<MessageTypes.SocialSimRos.TrialStart>
+    private ulong stamp;
+    private ulong prevStamp;
+    private Vector3 robotPosition;
+    private Quaternion robotRotation;
+    private Vector3 targetPosition;
+    private Quaternion targetRotation;
+    private List<Vector3> peoplePositions;
+    private List<Quaternion> peopleRotations;
+
+    private double timeLimit;
+
+    private bool isMessageReceived;
+
+    void Awake()
     {
-        private ulong stamp;
-        private ulong prevStamp;
-        private Vector3 robotPosition;
-        private Quaternion robotRotation;
-        private Vector3 targetPosition;
-        private Quaternion targetRotation;
-        private List<Vector3> peoplePositions;
-        private List<Quaternion> peopleRotations;
+        peoplePositions = new List<Vector3>();
+        peopleRotations = new List<Quaternion>();
+    }
 
-        private double timeLimit;
+    void Start()
+    {
+        throw new NotImplementedException("To implement");
+        ROSConnection.instance.Subscribe<RosMessageTypes.SocialSimRos.MTrialStart>("/social_sim/start_trial", ReceiveMessage);
+    }
 
-        private bool isMessageReceived;
-
-        void Awake() {
-            peoplePositions = new List<Vector3>();
-            peopleRotations = new List<Quaternion>();
-        }
-
-        protected override void Start()
+    private void Update()
+    {
+        if (isMessageReceived && prevStamp != stamp)
         {
-            base.Start();
+            prevStamp = stamp;
+            StartTrial();
         }
+    }
 
-        private void Update()
+    void ReceiveMessage(RosMessageTypes.SocialSimRos.MTrialStart message)
+    {
+        stamp = message.header.stamp.secs;
+        robotPosition = ((Vector3<FLU>)GetPosition(message.spawn)).toUnity;
+        robotRotation = ((Quaternion<FLU>)GetRotation(message.spawn)).toUnity;
+        targetPosition = ((Vector3<FLU>)GetPosition(message.target)).toUnity;
+        targetRotation = ((Quaternion<FLU>)GetRotation(message.target)).toUnity;
+        if (message.people.poses.Length <= 0)
         {
-            if (isMessageReceived && prevStamp != stamp)
-            {
-                prevStamp = stamp;
-                StartTrial();
-            }
+            Debug.LogError("People positions are empty, cannot start");
         }
+        peoplePositions.Clear();
+        peopleRotations.Clear();
+        foreach (RosMessageTypes.Geometry.MPose pose in message.people.poses)
+        {
+            peoplePositions.Add(((Vector3<FLU>)GetPosition(pose)).toUnity);
+            peopleRotations.Add(((Quaternion<FLU>)GetRotation(pose)).toUnity);
+        }
+        timeLimit = message.time_limit;
+        isMessageReceived = true;
+    }
 
-        protected override void ReceiveMessage(MessageTypes.SocialSimRos.TrialStart message)
-        {
-            stamp = message.header.stamp.secs;
-            robotPosition = GetPosition(message.spawn).Ros2Unity();
-            robotRotation = GetRotation(message.spawn).Ros2Unity();
-            targetPosition = GetPosition(message.target).Ros2Unity();
-            targetRotation = GetRotation(message.target).Ros2Unity();
-            if (message.people.poses.Length <= 0) {
-                Debug.LogError("People positions are empty, cannot start");
-            }
-            peoplePositions.Clear();
-            peopleRotations.Clear();
-            foreach (MessageTypes.Geometry.Pose pose in message.people.poses) {
-                peoplePositions.Add(GetPosition(pose).Ros2Unity());
-                peopleRotations.Add(GetRotation(pose).Ros2Unity());
-            }
-            timeLimit = message.time_limit;
-            isMessageReceived = true;
-        }
+    private void StartTrial()
+    {
+        //Debug.Log("Starting Trial");
+        //GetComponent<TrialStatusPublisher>().StartTrial(robotPosition, robotRotation,
+        //                                                targetPosition, targetRotation,
+        //                                                peoplePositions, peopleRotations,
+        //                                                timeLimit);
+    }
 
-        private void StartTrial()
-        {
-            Debug.Log("Starting Trial");
-            GetComponent<TrialStatusPublisher>().StartTrial(robotPosition, robotRotation,
-                                                            targetPosition, targetRotation,
-                                                            peoplePositions, peopleRotations,
-                                                            timeLimit);
-        }
+    private Vector3 GetPosition(RosMessageTypes.Geometry.MPose message)
+    {
+        return new Vector3(
+            (float)message.position.x,
+            (float)message.position.y,
+            (float)message.position.z);
+    }
 
-        private Vector3 GetPosition(MessageTypes.Geometry.Pose message)
-        {
-            return new Vector3(
-                (float)message.position.x,
-                (float)message.position.y,
-                (float)message.position.z);
-        }
-
-        private Quaternion GetRotation(MessageTypes.Geometry.Pose message)
-        {
-            return new Quaternion(
-                (float)message.orientation.x,
-                (float)message.orientation.y,
-                (float)message.orientation.z,
-                (float)message.orientation.w);
-        }
+    private Quaternion GetRotation(RosMessageTypes.Geometry.MPose message)
+    {
+        return new Quaternion(
+            (float)message.orientation.x,
+            (float)message.orientation.y,
+            (float)message.orientation.z,
+            (float)message.orientation.w);
     }
 }

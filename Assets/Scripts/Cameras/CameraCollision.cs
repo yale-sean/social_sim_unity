@@ -26,10 +26,12 @@ public class CameraCollision : MonoBehaviour
         if (Physics.Linecast(playerPos, desiredCameraPos, out hit))
         {
             distance = Mathf.Clamp(hit.distance, minDistance, maxDistance);
-        } else {
+        }
+        else
+        {
             distance = maxDistance;
         }
 
-        transform.localPosition = Vector3.Lerp(transform.localPosition, playerDir * distance, Time.deltaTime * smooth);   
+        transform.localPosition = Vector3.Lerp(transform.localPosition, playerDir * distance, Time.deltaTime * smooth);
     }
 }

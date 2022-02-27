@@ -10,6 +10,6 @@ public class CopyToken : MonoBehaviour
 
     public void DoCopyToken()
     {
-    	GUIUtility.systemCopyBuffer = token.text;
+        GUIUtility.systemCopyBuffer = token.text;
     }
 }

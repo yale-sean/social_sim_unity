@@ -9,10 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83961010479978511}
-  - component: {fileID: 83961010479978509}
   - component: {fileID: 83961010479978508}
-  - component: {fileID: 83961010479978507}
-  - component: {fileID: 83961010479978506}
   m_Layer: 0
   m_Name: CreateMap
   m_TagString: Untagged
@@ -35,22 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &83961010479978509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83961010479978510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff98778ae051cfd40a6e4effdf851ebd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SecondsTimeout: 10
-  Serializer: 0
-  protocol: 0
-  RosBridgeServerUrl: ws://127.0.0.1:9090
 --- !u!114 &83961010479978508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,33 +47,8 @@ MonoBehaviour:
   SceneObject: {fileID: 0}
   MapHeight: 1
   Resolution: 0.1
+  TransformOnly: 0
   qualityLevel: 50
---- !u!114 &83961010479978507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83961010479978510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84d21e62a271a3457bc626461039f343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Topic: /short_map_image/compressed
---- !u!114 &83961010479978506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83961010479978510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84d21e62a271a3457bc626461039f343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Topic: /tall_map_image/compressed
 --- !u!1 &83961011341446999
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +104,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -172,3 +129,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

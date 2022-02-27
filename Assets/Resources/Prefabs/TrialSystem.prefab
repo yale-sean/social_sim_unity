@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 131477032}
   - component: {fileID: 131477033}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,6 +90,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &1686276439395889757
@@ -131,11 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1686276439412757278}
-  - component: {fileID: 1686276439412757349}
-  - component: {fileID: 1686276439412757274}
   - component: {fileID: 1686276439412757275}
-  - component: {fileID: 1686276439412757272}
-  - component: {fileID: 1686276439412757273}
+  - component: {fileID: 2611791689371596823}
   - component: {fileID: 1686276439412757348}
   - component: {fileID: 275976126}
   m_Layer: 0
@@ -161,37 +159,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1686276439412757349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686276439412757279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff98778ae051cfd40a6e4effdf851ebd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SecondsTimeout: 10
-  Serializer: 0
-  protocol: 0
-  RosBridgeServerUrl: ws://127.0.0.1:9090
---- !u!114 &1686276439412757274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686276439412757279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2c1ea4270e6b1c499db21780a9255ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Topic: /social_sim/spawn_positions
-  SpawnTag: Spawn
-  possiblePositions: []
 --- !u!114 &1686276439412757275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,9 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d66597cfdd5318ca9cf1ecda490445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Topic: /social_sim/start_trial
-  TimeStep: 0
---- !u!114 &1686276439412757272
+--- !u!114 &2611791689371596823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,26 +183,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34a52725b18cc91da5adc419e530514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Topic: /social_sim/is_running
   robotTransform: {fileID: 0}
   targetObject: {fileID: 3266656251314937955}
   pedSpawner: {fileID: 1686276439412757348}
   reachedDestinationThreshold: 0.5
-  isRunning: 0
---- !u!114 &1686276439412757273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686276439412757279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc8c51a92e06c4737ac2bdc4ad721e2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Topic: /social_sim/last_info
-  FrameId: Unity
+  TrialIsRunningTopicName: social_sim/trial_is_running
+  TrialInfoTopicName: social_sim/trial_info
+  ManualMode: 0
+  intimateDistance: 0.45
+  personalDistance: 1.2
+  stuckWindowSeconds: 5
+  stuckWindowDist: 0.05
+  timeLimitMins: 5
 --- !u!114 &1686276439412757348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,17 +202,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686276439412757279}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f47961e45d37a036957fb8df768b45f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PathfindingFrequency: 25
-  PerceptionRadius: 2
-  agentPrefab: {fileID: 1779652455186312154, guid: 3c826d2b8f1c28dbaa1b2f7a29169154,
+  PerceptionRadius: 6
+  agentPrefab: {fileID: 1779652455186312154, guid: 0cffa64753c704bdd9302a3c0480714d,
     type: 3}
   agentParent: {fileID: 1686276439395889757}
-  poseArrayPublisher: {fileID: 1686276439412757274}
+  groupMoveFrames: 600
 --- !u!114 &275976126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,13 +226,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathfindingFrequency: 25
-  PerceptionRadius: 2
-  agentPrefab: {fileID: 1779652455186312154, guid: 3c826d2b8f1c28dbaa1b2f7a29169154,
+  PerceptionRadius: 1
+  agentPrefab: {fileID: 1779652455186312154, guid: 0cffa64753c704bdd9302a3c0480714d,
     type: 3}
   agentParent: {fileID: 1686276439395889757}
-  agentCount: 5
+  groupMoveFrames: 600
+  agentCount: 1
+  minGroupSize: 3
+  interactiveGroup: 1
+  interactiveIn: {x: 0, y: 0, z: 0}
+  interactiveInOrientation: {x: 0, y: 0, z: 0, w: 0}
+  interactiveIndex: 0
   autoStart: 1
   SpawnTag: Spawn
+  SpawnGroupTag: SpawnGroup
+  SpawnSequenceTag: SpawnSequence
 --- !u!1 &3266656251314937955
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,8 +292,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2679650683043107623, guid: 42b86ce3994f54e39ad535eec23bcb46,
         type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679650683043107623, guid: 42b86ce3994f54e39ad535eec23bcb46,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
         type: 3}
@@ -347,6 +337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.84462327
+      objectReference: {fileID: 0}
+    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.46193978
       objectReference: {fileID: 0}
@@ -362,16 +357,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.84462327
-      objectReference: {fileID: 0}
-    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 45
       objectReference: {fileID: 0}
@@ -384,21 +369,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2679650683043107643, guid: 42b86ce3994f54e39ad535eec23bcb46,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42b86ce3994f54e39ad535eec23bcb46, type: 3}

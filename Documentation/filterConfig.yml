@@ -1,0 +1,10 @@
+apiRules:
+- include:
+    uidRegex: ^SEAN
+    type: Namespace
+- include:
+    uidRegex: ^IVI
+    type: Namespace
+- exclude:
+    uidRegex: .*
+    type: Namespace

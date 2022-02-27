@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7702875534212402611}
   - component: {fileID: 1277376571408291887}
   m_Layer: 0
-  m_Name: "\u0634\u0644\u0627LabRocketboxSFRandom"
+  m_Name: LabRocketboxSFRandom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,10 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forceMultiplier: 0.4
   goalFactor: 1
-  agentFactor: 1
-  wallFactor: 3
+  agentFactor: 0.5
+  wallFactor: 0.5
   groundCheckDistance: 0.3
-  perceptionRadius: 1.5
+  perceptionRadius: 2
   useAvatarParam: 0
   avatars:
   - {fileID: 7598931690601634740, guid: 096264169a903ea1ab0d43dda0b1080f, type: 3}

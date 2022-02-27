@@ -50,7 +50,8 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-.vscode
+
+UserSettings/EditorUserSettings.asset
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -72,3 +73,14 @@ Assets/ExternalAssets/UMA/InternalDataStore/InEditor.meta
 
 # DS_Store from Mac
 *.DS_Store
+
+.vsconfig
+
+# docfx
+_site/*
+Documentation/api/*
+Documentation/obj
+**/xdoc/cache/*
+
+# recordings
+Recordings/*

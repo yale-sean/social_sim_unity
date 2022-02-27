@@ -12,16 +12,22 @@ public class CameraController : MonoBehaviour
         SwitchCam();
     }
 
-    void SwitchCam() {
+    void SwitchCam()
+    {
         currentCamIdx += 1;
-        if (currentCamIdx >= cameras.Length) {
+        if (currentCamIdx >= cameras.Length)
+        {
             currentCamIdx = 0;
         }
         print("Current Camera: " + currentCamIdx);
-        for (int i = 0; i < cameras.Length; i++) {
-            if (i == currentCamIdx) {
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            if (i == currentCamIdx)
+            {
                 cameras[i].enabled = true;
-            } else {
+            }
+            else
+            {
                 cameras[i].enabled = false;
             }
         }
@@ -30,7 +36,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C)) {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
             SwitchCam();
         }
 

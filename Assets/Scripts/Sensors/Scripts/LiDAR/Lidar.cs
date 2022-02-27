@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lidar : MonoBehaviour {
+public class Lidar : MonoBehaviour
+{
 
     public float maxAngle = 10;
     public float minAngle = -10;
@@ -24,17 +25,19 @@ public class Lidar : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
-        distances = new float[numberOfLayers* numberOfIncrements];
+    void Start()
+    {
+        distances = new float[numberOfLayers * numberOfIncrements];
         azimuts = new float[numberOfIncrements];
         vertIncrement = (float)(maxAngle - minAngle) / (float)(numberOfLayers - 1);
         azimutIncrAngle = (float)(360.0f / numberOfIncrements);
-        hit_points = new Vector3[numberOfLayers*numberOfIncrements];
+        hit_points = new Vector3[numberOfLayers * numberOfIncrements];
         isInitialized = true;
     }
 
-// Update is called once per frame
-    public void Scan () {
+    // Update is called once per frame
+    public void Scan()
+    {
         Vector3 fwd = new Vector3(0, 0, 1);
         Vector3 dir;
         RaycastHit hit;
@@ -50,31 +53,33 @@ public class Lidar : MonoBehaviour {
                 indx = layer + incr * numberOfLayers;
                 angle = minAngle + (float)layer * vertIncrement;
                 azimuts[incr] = incr * azimutIncrAngle;
-                dir = transform.rotation * Quaternion.Euler(-angle, azimuts[incr], 0)*fwd;
+                dir = transform.rotation * Quaternion.Euler(-angle, azimuts[incr], 0) * fwd;
                 if (Physics.Raycast(transform.position, dir, out hit, maxRange))
                 {
                     distance = hit.distance;
-                    
+
                 }
                 distances[indx] = (float)hit.distance;
-                hit_points[indx] = transform.position + dir*hit.distance;
+                hit_points[indx] = transform.position + dir * hit.distance;
             }
         }
 
     }
 
-    public bool IsInitialized () {
+    public bool IsInitialized()
+    {
         return isInitialized;
     }
 
-    void OnDrawGizmos() 
-	{
-        if(hit_points != null && hit_points.Length != 0) {
+    void OnDrawGizmos()
+    {
+        if (hit_points != null && hit_points.Length != 0)
+        {
             Gizmos.color = GizmoPointColor;
-            foreach(Vector3 p in hit_points)
+            foreach (Vector3 p in hit_points)
             {
                 Gizmos.DrawSphere(p, GizmoPointSize);
             }
         }
-	}
+    }
 }

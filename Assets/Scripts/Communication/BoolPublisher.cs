@@ -1,35 +1,45 @@
-﻿using System.Collections;
+﻿/*
+    Copyright (c) 2020, Members of Yale Interactive Machines Group, Yale University,
+    Nathan Tsoi
+    All rights reserved.
+    This source code is licensed under the BSD-style license found in the
+    LICENSE file in the root directory of this source tree. 
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Robotics.ROSTCPConnector;
 
-namespace RosSharp.RosBridgeClient
+public class BoolPublisher : MonoBehaviour
 {
-    public class BoolPublisher : UnityPublisher<MessageTypes.Std.Bool>
-	{
-	    private MessageTypes.Std.Bool message;
-	    private bool isInfoUpdated;
+    public string Topic;
+    ROSConnection ros;
 
-        protected override void Start()
-        {
-            base.Start();
-            InitializeMessage();
-        }
+    private RosMessageTypes.Std.MBool message;
+    private bool isInfoUpdated;
 
-        private void Update()
-        {
-        	if (isInfoUpdated)
-            	Publish(message);
-        }
+    void Start()
+    {
+        ros = ROSConnection.instance;
+        //base.Start();
+        InitializeMessage();
+    }
 
-        private void InitializeMessage()
-        {
-            message = new MessageTypes.Std.Bool();
-        }
+    private void Update()
+    {
+        if (isInfoUpdated)
+            ros.Send(Topic, message);
+    }
 
-        public void UpdateInfo(bool data)
-        {
-            message.data = data;
-        	isInfoUpdated = true;
-        }
-	}
+    private void InitializeMessage()
+    {
+        message = new RosMessageTypes.Std.MBool();
+    }
+
+    public void UpdateInfo(bool data)
+    {
+        message.data = data;
+        isInfoUpdated = true;
+    }
 }

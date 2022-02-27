@@ -48,7 +48,7 @@ MonoBehaviour:
   agentFactor: 1
   wallFactor: 3
   groundCheckDistance: 0.3
-  perceptionRadius: 1.5
+  perceptionRadius: 6
   useAvatarParam: 0
   avatars:
   - {fileID: 7598931690601634740, guid: 096264169a903ea1ab0d43dda0b1080f, type: 3}

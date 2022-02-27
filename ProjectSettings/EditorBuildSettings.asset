@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
+    path: Assets/Scenes/Util/LoadingScene.unity
     guid: afaf2d797e044c3c29459f7dfc01896d
   - enabled: 1
-    path: Assets/Scenes/AgentControlLabScene.unity
-    guid: 538e3d03919b74216b7de0ff1994daca
+    path: Assets/Scenes/SEAN/Warehouse.unity
+    guid: 027a3f35c6a84cd4fbdf642c6fb4758f
   - enabled: 1
-    path: Assets/Scenes/AgentControlSmallWarehouseScene.unity
-    guid: b1398bef050c84d3fa0641d073e36019
+    path: Assets/Scenes/SEAN/Lab.unity
+    guid: 09c43f2a74d4f244d8bdb095339a2ad0
+  - enabled: 1
+    path: Assets/Scenes/SEAN/Outdoor.unity
+    guid: 6103641431328534c8068e20dadca622
   m_configObjects: {}

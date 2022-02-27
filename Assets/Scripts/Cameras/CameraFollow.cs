@@ -17,7 +17,8 @@ namespace UnityStandardAssets._2D
         private float elapsed = 0.0f;
 
 
-        private void Awake() {
+        private void Awake()
+        {
             // Setting up the reference.
             m_Player = GameObject.FindGameObjectWithTag(FrameTag).transform;
         }
@@ -49,12 +50,15 @@ namespace UnityStandardAssets._2D
             float targetX = transform.position.x;
             float targetZ = transform.position.z;
 
-            float d = ((xSmooth + zSmooth)/2);
+            float d = ((xSmooth + zSmooth) / 2);
             float t = 1f;
-            if (elapsed < d) {
+            if (elapsed < d)
+            {
                 t = elapsed / d;
                 elapsed += Time.deltaTime;
-            } else {
+            }
+            else
+            {
                 elapsed = 0;
             }
 
@@ -77,10 +81,11 @@ namespace UnityStandardAssets._2D
             var targetPos = new Vector3(m_Player.position.x, transform.position.y, m_Player.position.z);
             var targetRot = Quaternion.LookRotation(m_Player.transform.position - transform.position);
 
-            if (CheckXMargin() || CheckZMargin()) {
+            if (CheckXMargin() || CheckZMargin())
+            {
                 transform.position = Vector3.Lerp(transform.position, targetPos, t);
             }
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSmooth*Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotSmooth * Time.deltaTime);
         }
     }
 }

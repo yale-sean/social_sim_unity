@@ -13,12 +13,12 @@ NavMeshProjectSettings:
     cost: 2
   - name: Terrain
     cost: 10
-  - name: 
+  - name: Unguided
+    cost: 10
+  - name: Guided
     cost: 1
-  - name: 
-    cost: 1
-  - name: 
-    cost: 1
+  - name: Street
+    cost: 10
   - name: 
     cost: 1
   - name: 
@@ -85,6 +85,8 @@ NavMeshProjectSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_SettingNames:

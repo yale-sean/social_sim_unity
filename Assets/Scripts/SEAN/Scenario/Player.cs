@@ -13,6 +13,7 @@ namespace SEAN.Scenario
                 if (c.gameObject.name == camera_first.name)
                 {
                     c.gameObject.SetActive(true);
+                    c.gameObject.transform.Rotate(Vector3.right * 15.0f);
                 }
                 else
                 {

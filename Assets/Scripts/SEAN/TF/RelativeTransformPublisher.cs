@@ -14,6 +14,10 @@ namespace SEAN.TF
         SEAN sean;
         public string FrameID;
 
+        public float AdjustXRot = 0;
+        public float AdjustYRot = 0;
+        public float AdjustZRot = 0;
+
         private bool initialized = false;
         private RosMessageTypes.Std.MTime LastHeader = new RosMessageTypes.Std.MTime();
         GameObject BaseToFrame;
@@ -33,6 +37,13 @@ namespace SEAN.TF
         {
             BaseToFrame.transform.position = transform.position - sean.robot.position;
             BaseToFrame.transform.rotation = transform.rotation * Quaternion.Inverse(sean.robot.rotation);
+            if (AdjustXRot != 0 || AdjustYRot != 0 || AdjustZRot != 0) {
+                Vector3 angles = BaseToFrame.transform.rotation.eulerAngles;
+                angles[0] += AdjustXRot;
+                angles[1] += AdjustYRot;
+                angles[2] += AdjustZRot;
+                BaseToFrame.transform.rotation = Quaternion.Euler(angles);
+            }
             baseToFramePoseStamped.pose.position = Util.Geometry.GetGeometryPoint(BaseToFrame.transform.position.To<FLU>());
             baseToFramePoseStamped.pose.orientation = Util.Geometry.GetGeometryQuaternion(BaseToFrame.transform.rotation.To<FLU>());
             PublishIfNew(new NamedTransform(BaseToFrame.name, baseToFramePoseStamped));

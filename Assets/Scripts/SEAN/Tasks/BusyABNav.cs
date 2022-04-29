@@ -12,7 +12,7 @@ namespace SEAN.Tasks
     {
 
         KMeansResults result;
-
+        
         public float DistanceFromBiggestGroupCentroid = 5;
 
         protected override bool NewTask()
@@ -45,11 +45,12 @@ namespace SEAN.Tasks
                 }
             }
             Scenario.Trajectory.TrackedAgent centroid = agents[result.centroids[biggestClusterID]];
-
-            Vector3 startPosition = Util.Navmesh.RandomHit(centroid.transform.position, DistanceFromBiggestGroupCentroid).position;
+            
+            // Set the Robot to start from farther away from the group
+            Vector3 startPosition = Util.Navmesh.RandomHit(centroid.transform.position, DistanceFromBiggestGroupCentroid*3).position;
             while (startPosition.x == float.PositiveInfinity)
             {
-                startPosition = Util.Navmesh.RandomHit(centroid.transform.position, DistanceFromBiggestGroupCentroid).position;
+                startPosition = Util.Navmesh.RandomHit(centroid.transform.position, DistanceFromBiggestGroupCentroid*3).position;
             }
             startPosition.y = 0.75f;
             robotStart.transform.position = startPosition;

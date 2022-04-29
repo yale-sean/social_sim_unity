@@ -13,6 +13,7 @@ namespace SEAN.Scenario.Agents
         protected const float MASS = 80;
         protected const float PERCEPTION_RADIUS = 2;
         protected const float ANGULAR_SPEED = 120;
+        protected const float ANIMATION_SMOOTHING = 0.6f;
 
         //private CapsuleCollider collisionCapsule;
         private Animator animator;
@@ -193,11 +194,18 @@ namespace SEAN.Scenario.Agents
             }
             else
             {
+                if (GetType().Equals(typeof(PlayerAgent)))
+                {
+                    angle = velocity.y * ANGULAR_SPEED * Time.deltaTime;
+                }
                 // read the angular velocity from the velocity field
                 // note: this line is nearly identical to the following lines
                 // but i didn't want to  change it in case it's specific to
                 // SF code
-                angle = -Vector3.SignedAngle(velocity, transform.forward, Vector3.up);
+                else
+                {
+                    angle = -Vector3.SignedAngle(velocity, transform.forward, Vector3.up);
+                }
             }
             //Angular Velocity and rotation
             if (Mathf.Abs(angle) > ANGULAR_SPEED * Time.deltaTime)
@@ -213,9 +221,13 @@ namespace SEAN.Scenario.Agents
             var idle = animParams.magnitude < idleSpeed && !applyRootMotion;
 
             animator.SetBool("Idling", idle);
-            animator.speed = velocity.magnitude;
-            animator.SetFloat("Forward", animParams.z);
-            animator.SetFloat("Strafe", animParams.x);
+            if (!GetType().Equals(typeof(PlayerAgent)))
+            {
+                animator.speed = velocity.magnitude;
+
+            }
+            animator.SetFloat("Forward", animParams.z/ANIMATION_SMOOTHING);
+            animator.SetFloat("Strafe", animParams.x/ANIMATION_SMOOTHING);
 
             if (ShowDebug)
             {

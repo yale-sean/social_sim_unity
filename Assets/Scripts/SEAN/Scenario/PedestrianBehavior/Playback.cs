@@ -7,6 +7,7 @@
 using System;
 using SEAN.Scenario.Agents.Playback;
 using UnityEngine;
+using System.Linq;
 
 namespace SEAN.Scenario.PedestrianBehavior
 {
@@ -54,8 +55,12 @@ namespace SEAN.Scenario.PedestrianBehavior
         {
             get
             {
-                // TODO:
-                return new Trajectory.TrackedAgent[0];
+                if (navManager == null)
+                {
+                    return new Trajectory.TrackedAgent[0];
+                }
+                //Debug.Log("size of agent list:"+navManager.agentsList.Count);
+                return navManager.agents.Values.ToArray();
             }
         }
 

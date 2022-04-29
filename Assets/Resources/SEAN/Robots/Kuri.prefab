@@ -234,6 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrameID: firstperson_rgb_link
+  AdjustXRot: 0
+  AdjustYRot: 90
+  AdjustZRot: 90
 --- !u!1 &4199203776191520874
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +535,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrameID: front_right_wheel_link
+  AdjustXRot: 0
+  AdjustYRot: 0
+  AdjustZRot: 0
 --- !u!1 &4199203776273408011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,6 +1623,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrameID: front_left_wheel_link
+  AdjustXRot: 0
+  AdjustYRot: 0
+  AdjustZRot: 0
 --- !u!1 &4199203777015859794
 GameObject:
   m_ObjectHideFlags: 0
@@ -3144,12 +3153,12 @@ PrefabInstance:
     - target: {fileID: 1493298184588145989, guid: 8e0f71d86229c914c88706149c87ff2d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9990483
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1493298184588145989, guid: 8e0f71d86229c914c88706149c87ff2d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.043619405
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1493298184588145989, guid: 8e0f71d86229c914c88706149c87ff2d,
         type: 3}
@@ -3164,7 +3173,7 @@ PrefabInstance:
     - target: {fileID: 1493298184588145989, guid: 8e0f71d86229c914c88706149c87ff2d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1493298184588145989, guid: 8e0f71d86229c914c88706149c87ff2d,
         type: 3}

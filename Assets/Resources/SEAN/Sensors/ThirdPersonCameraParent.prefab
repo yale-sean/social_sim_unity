@@ -134,6 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrameID: thirdperson_rgb_link
+  AdjustXRot: 0
+  AdjustYRot: 90
+  AdjustZRot: 90
 --- !u!114 &4828862030053796946
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,6 +26,9 @@ namespace SEAN.Tasks
         public float timeoutTaskSeconds = 120f;
         private float taskStartTime = 0f;
 
+        private float timer = 0.0f;
+        private int publishInterval = 10;
+
         private GameObject cube;
         private GameObject arrow;
 
@@ -99,7 +102,7 @@ namespace SEAN.Tasks
             }
         }
 
-        private GameObject interactiveGoal
+        protected GameObject interactiveGoal
         {
             get
             {
@@ -134,6 +137,7 @@ namespace SEAN.Tasks
         public float completionDistance = 1.2f;
 
         public int maximumNumberOfTasks = 0;
+        public int taskID;
 
         public bool isRunning { get; private set; }
         public ushort number { get; private set; }
@@ -164,7 +168,6 @@ namespace SEAN.Tasks
                 }
             }
         }
-
         public void Awake()
         {
             isRunning = false;
@@ -185,18 +188,24 @@ namespace SEAN.Tasks
         {
             CheckNewTask();
             // rotate the target
+            timer += Time.deltaTime;
+            if (PublishGoal && (timer >= publishInterval))
+            {
+                timer = 0;
+                Publish(interactiveGoal);
+            }
             if (cube)
             {
                 cube.transform.Rotate(0.0f, 2.0f, 0.0f, Space.World);
             }
         }
 
-        protected void Publish()
+        protected void Publish(GameObject goal)
         {
             nextGoal = new RosMessageTypes.Geometry.MPoseStamped();
             nextGoal.header.frame_id = FrameID;
             sean.clock.UpdateMHeader(nextGoal.header);
-            nextGoal.pose = Util.Geometry.GetMPose(interactiveGoal.transform);
+            nextGoal.pose = Util.Geometry.GetMPose(goal.transform);
             ros.Send(Topic, nextGoal);
         }
 
@@ -220,7 +229,7 @@ namespace SEAN.Tasks
             playerStart.SetActive(false);
         }
 
-        private void CheckNewTask()
+        protected virtual void CheckNewTask()
         {
             if (debouce())
             {
@@ -237,7 +246,7 @@ namespace SEAN.Tasks
                 {
                     if (PublishGoal)
                     {
-                        Publish();
+                        Publish(interactiveGoal);
                     }
                     onNewTask.Invoke();
                 }

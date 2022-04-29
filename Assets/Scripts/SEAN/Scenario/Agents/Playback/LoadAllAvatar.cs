@@ -88,14 +88,21 @@ namespace SEAN.Scenario.Agents.Playback
 
         IEnumerator Run()
         {
+            
             StartTime = Time.time;
             int currentFrame = startFrame;
             while (true)
             {
                 currentFrame = (int) Mathf.Floor((Time.time-StartTime) * fps)+startFrame;
                 currentFrame %= agentsInFrame.Count;
+                Debug.Log(currentFrame);
                 //print("frame: " + currentFrame + ", " + frames[currentFrame]);
-                CreateOrMovePedestrians(currentFrame);
+                try {
+                    CreateOrMovePedestrians(currentFrame);
+                } catch (KeyNotFoundException e) {
+                    Debug.Log("Error Frame " + currentFrame.ToString());
+                }
+                //CreateOrMovePedestrians(currentFrame);
                 yield return 0;
                 // yield return new WaitForSeconds(1.0f / fps);
             }
@@ -109,7 +116,8 @@ namespace SEAN.Scenario.Agents.Playback
             {
                 seenPedestrianIds.Add(agentId);
                 if (!agents.ContainsKey(agentId))
-                {
+                {   
+                    // Debug.LogFormat("agentId: {0}, pos: {1}", agentId, trajectories[agentId][frameId]);
                     SpawnAgent(agentId, trajectories[agentId][frameId]);
                 }
                 else
@@ -131,33 +139,36 @@ namespace SEAN.Scenario.Agents.Playback
         void SpawnAgent(int id, Pose pose)
         {
             var sfRandom = Instantiate(agentPrefab, Vector3.zero, Quaternion.identity);
-            IVI.INavigable inav = sfRandom.GetComponentInChildren<IVI.INavigable>();
-            inav.name = "Agent_" + id;
-            GameObject agent = inav.transform.gameObject;
-            agent.transform.position = pose.position;
-            agent.transform.rotation = pose.rotation;
-            agent.transform.parent = agentsGO.transform;
-            Agent agentComponent;
-            agentComponent = agent.GetComponent<Agent>();
-            if (agentComponent == null)
-            {
-                agentComponent = agent.AddComponent<Agent>();
-            }
+
             IVI.SFAgent sfAgentComponent;
-            sfAgentComponent = agent.GetComponent<IVI.SFAgent>();
+            sfAgentComponent = sfRandom.GetComponentInChildren<IVI.SFAgent>();
             if (sfAgentComponent != null)
             {
                 Destroy(sfAgentComponent);
             }
-            // Allow intersection w/ other objects
-            foreach (Collider c in agent.GetComponents<Collider>())
+
+            Agent playbackAgent;
+            playbackAgent = sfRandom.GetComponentInChildren<Agent>();
+            if (playbackAgent == null)
             {
-                if (GetComponent<Collider>().GetType() == typeof(CapsuleCollider))
-                {
-                    ((CapsuleCollider)c).radius = 0.1f;
-                }
+                playbackAgent = sfRandom.transform.GetChild(0).gameObject.AddComponent<Agent>();
             }
-            agents.Add(id, agentComponent);
+            
+            playbackAgent.name = "Agent_" + id;
+            playbackAgent.transform.position = pose.position;
+            playbackAgent.transform.rotation = pose.rotation;
+            playbackAgent.transform.parent = agentsGO.transform;
+
+            // Allow intersection w/ other objects
+            // foreach (Collider c in playbackAgent.GetComponents<Collider>())
+            // {   
+            //     if (GetComponent<Collider>().GetType() == typeof(CapsuleCollider))
+            //     {
+            //         Debug.Log("HERE");
+            //         ((CapsuleCollider)c).radius = 0.01f;
+            //     }
+            // }
+            agents.Add(id, playbackAgent);
         }
 
         void MoveAgent(int id, Pose pose)

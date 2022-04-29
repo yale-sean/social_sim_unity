@@ -19,11 +19,12 @@ namespace SEAN.Tasks
         public string pointC = "PointC";
         public string pointD = "PointD";
         public string pointE = "PointE";
+        public string pointF = "PointF";
 
-        private int currentTrajectory;
+        private int trajectoryID;
         private int currentPoint;
 
-        public List<List<string>> trajectories;
+        public List<string> trajectory;
 
         public override void Start()
         {
@@ -33,82 +34,126 @@ namespace SEAN.Tasks
                 throw new Exception("Please activate the LabStudyScenario");
             }
             scenario = (Scenario.PedestrianBehavior.LabStudy)sean.pedestrianBehavior;
-            SetTrajectories();
-            NewTask();
+
+            trajectoryID = sean.robotTask.taskID;
+            currentPoint = 0;
+
+            trajectory = GetTrajectory(trajectoryID);
+            InitializeTaskPositions();
             onNewTask.Invoke();
-            Publish();
+            Publish(interactiveGoal);
         }
 
-        private void SetTrajectories()
+        private List<string> GetTrajectory(int id)
         {
-            trajectories = new List<List<string>>();
+            trajectory = new List<string>();
 
-            List<string> one = new List<string>();
-            one.Add(pointA);
-            one.Add(pointB);
-            trajectories.Add(one);
-
-            List<string> two = new List<string>();
-            two.Add(pointB);
-            two.Add(pointC);
-            two.Add(pointD);
-            trajectories.Add(two);
-
-            List<string> three = new List<string>();
-            three.Add(pointD);
-            three.Add(pointA);
-            three.Add(pointB);
-            three.Add(pointE);
-            trajectories.Add(three);
-
-            currentPoint = -1;
-            currentTrajectory = 0;
-
-            //List<string> four = new List<string>();
-            //four.Add(PointE);
-            //four.Add(PointF);
-            //four.Add(PointC);
-            //four.Add(PointA);
-            //four.Add(PointD);
+            switch(id)
+            {
+                case 0:
+                    // walk around room
+                    trajectory.Add(pointA);
+                    trajectory.Add(pointB);
+                    trajectory.Add(pointE);
+                    trajectory.Add(pointD);
+                    return trajectory;
+                case 1:
+                    // around blocks and through middle
+                    trajectory.Add(pointA);
+                    trajectory.Add(pointC);
+                    trajectory.Add(pointE);
+                    trajectory.Add(pointF);
+                    trajectory.Add(pointD);
+                    trajectory.Add(pointC);
+                    return trajectory;
+                case 2:
+                    // figure 8 through center
+                    trajectory.Add(pointB);
+                    trajectory.Add(pointE);
+                    trajectory.Add(pointF);
+                    trajectory.Add(pointC);
+                    trajectory.Add(pointA);
+                    trajectory.Add(pointD);
+                    trajectory.Add(pointC);
+                    trajectory.Add(pointB);
+                    return trajectory;
+                case 3:
+                    // navigate through narrow spaces
+                    trajectory.Add(pointE);
+                    trajectory.Add(pointF);
+                    trajectory.Add(pointC);
+                    trajectory.Add(pointA);
+                    trajectory.Add(pointD);
+                    trajectory.Add(pointF);
+                    trajectory.Add(pointE);
+                    return trajectory;
+            }
+            throw new Exception("Please use a valid task ID");
         }
 
-        protected override bool NewTask()
+        protected override void CheckNewTask()
+        {
+            //Debug.Log("Curr Trajectory " + currentTrajectory);
+            //Debug.Log("Curr Point " + currentPoint);
+            float distToWayPoint = Vector3.Distance(sean.player.transform.GetChild(0).position, robotGoal.transform.position);
+            if (distToWayPoint < completionDistance)
+            {
+                NewTask();
+            }
+        }
+
+        private void UpdateWaypoints()
+        {
+            robotGoal.transform.position = scenario.positions[trajectory[currentPoint + 1]].transform.position;
+            robotGoal.transform.rotation = scenario.positions[trajectory[currentPoint + 1]].transform.rotation;
+            playerGoal.transform.position = scenario.positions[trajectory[currentPoint + 1]].transform.position + Vector3.up;
+            playerGoal.transform.rotation = scenario.positions[trajectory[currentPoint + 1]].transform.rotation;
+            Publish(interactiveGoal);
+        }
+
+        private void InitializeTaskPositions()
         {
             foreach (GameObject position in scenario.positions.Values)
             {
                 position.SetActive(false);
             }
-
-            if (currentTrajectory < trajectories.Count)
+            Vector3 offset1 = new Vector3(-0.75f, 0, 0);
+            Vector3 offset2 = new Vector3(0.75f, 0, 0);
+            if (trajectoryID == 0 || trajectoryID == 1)
             {
-
-                if (currentPoint < trajectories[currentTrajectory].Count - 2)
-                {
-                    currentPoint += 1;
-                }
-                else
-                {
-                    currentTrajectory += 1;
-                    currentPoint = 0;
-                }
+                robotStart.transform.position = scenario.positions[trajectory[currentPoint]].transform.position + offset1;
             }
+            if (trajectoryID == 2 || trajectoryID == 3)
+            {
+                robotStart.transform.position = scenario.positions[trajectory[currentPoint]].transform.position + offset2;
+            }
+            robotStart.transform.rotation = scenario.positions[trajectory[currentPoint]].transform.rotation;
 
-            robotStart.transform.position = scenario.positions[trajectories[currentTrajectory][currentPoint]].transform.position;
-            robotStart.transform.rotation = scenario.positions[trajectories[currentTrajectory][currentPoint]].transform.rotation;
-            robotGoal.transform.position = scenario.positions[trajectories[currentTrajectory][currentPoint + 1]].transform.position;
-            robotGoal.transform.rotation = scenario.positions[trajectories[currentTrajectory][currentPoint + 1]].transform.rotation;
-
-            playerStart.transform.position = scenario.positions[trajectories[currentTrajectory][currentPoint]].transform.position;
-
+            playerStart.transform.position = scenario.positions[trajectory[currentPoint]].transform.position;
             // increase playerStart y-axis to prevent player from jumping at start of task
-            // increase playerStart x-axis to prevent player from spawning on top of the robot
-            Vector3 startPos = playerStart.transform.position + new Vector3(0.5f, 1, 0);
+            Vector3 startPos = playerStart.transform.position + new Vector3(0, 1, 0);
             playerStart.transform.position = startPos;
-            playerStart.transform.rotation = scenario.positions[trajectories[currentTrajectory][currentPoint]].transform.rotation;
-            playerGoal.transform.position = scenario.positions[trajectories[currentTrajectory][currentPoint + 1]].transform.position + Vector3.up;
-            playerGoal.transform.rotation = scenario.positions[trajectories[currentTrajectory][currentPoint + 1]].transform.rotation;
+            playerStart.transform.rotation = scenario.positions[trajectory[currentPoint]].transform.rotation;
+            UpdateWaypoints();
+        }
 
-            SetTargetFlags(playerGoal);
+        protected override bool NewTask()
+        {
+            if (currentPoint < trajectory.Count - 2)
+            {
+                currentPoint += 1;
+                UpdateWaypoints();
+                // subtask, not new task
+                return false;
+            }
+            else
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
             return true;
         }
 

@@ -30,5 +30,10 @@ namespace SEAN.Scenario.Agents.Playback
         {
             return velocity;
         }
+
+        protected override void StopNavigation()
+        {
+            // Do nothing
+        }
     }
 }

@@ -52,11 +52,10 @@ namespace SEAN
             for (int i = 0; i < args.Length - 1; i++)
             {
                 string value = args[i + 1];
-                // TODO:
-                //if (args[i] == "-ros-tcp-port")
-                //{
-                //    RosConnectionPort = Int32.Parse(value);
-                //}
+                if (args[i] == "-ros-tcp-port")
+                {
+                    RosConnectionPort = Int32.Parse(value);
+                }
                 if (args[i] == "-scenario")
                 {
                     SetPedestrianBehavior(value);
@@ -68,6 +67,15 @@ namespace SEAN
                 else if (args[i] == "-task-social-situation")
                 {
                     taskSocialSituation.socialSituation = (Scenario.PedestrianBehavior.SocialSituation)Enum.Parse(typeof(Scenario.PedestrianBehavior.SocialSituation), value);
+                }
+                else if (args[i] == "-taskID")
+                {
+                    // Assume -task arg comes first 
+                    if (_task.name != "LabStudy")
+                    {
+                        throw new ArgumentException("-taskID flag can only be used with LabStudy task.");
+                    }
+                    robotTask.taskID = Int32.Parse(value);
                 }
                 else if (args[i] == "-completion-distance")
                 {
@@ -157,8 +165,9 @@ namespace SEAN
 
             ParseCommandLineArgs();
 
-            // TODO:
-            //ROSConnection.instance.RosPort = RosConnectionPort;
+#if !UNITY_EDITOR
+            ROSConnection.instance.RosPort = RosConnectionPort;
+#endif
         }
 
         public List<Scenario.PedestrianBehavior.Base> pedestrianBehaviors
@@ -397,11 +406,11 @@ namespace SEAN
                 {
                     foreach (Transform startOrGoal in child.gameObject.transform)
                     {
-                        if (start && startOrGoal.gameObject.name == "StartMarker")
+                        if (start && startOrGoal.gameObject.name == "Start")
                         {
                             return startOrGoal.gameObject;
                         }
-                        if (!start && startOrGoal.gameObject.name == "TargetFlag")
+                        if (!start && startOrGoal.gameObject.name == "Target")
                         {
                             return startOrGoal.gameObject;
                         }

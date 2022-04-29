@@ -868,6 +868,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7761232372837294283}
     m_Modifications:
+    - target: {fileID: 2865867049036302510, guid: 56172ca620e6643b6853f9279ebe9bf4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3119769914425820058, guid: 56172ca620e6643b6853f9279ebe9bf4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1077,6 +1082,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Robots
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303724057126554195, guid: 063871404301f43adbb9153da1b24b21,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303724057126554195, guid: 063871404301f43adbb9153da1b24b21,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303724057126554195, guid: 063871404301f43adbb9153da1b24b21,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070943729219450792, guid: 063871404301f43adbb9153da1b24b21,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063871404301f43adbb9153da1b24b21, type: 3}

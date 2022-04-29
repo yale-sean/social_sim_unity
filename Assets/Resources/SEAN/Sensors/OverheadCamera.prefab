@@ -117,6 +117,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrameID: overhead_rgb_link
+  AdjustXRot: 0
+  AdjustYRot: 90
+  AdjustZRot: 90
 --- !u!114 &5301559446701055314
 MonoBehaviour:
   m_ObjectHideFlags: 0

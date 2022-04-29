@@ -101,7 +101,10 @@ MonoBehaviour:
   FrameId: center_depth_link
   FPS: 15
   EnableOffscreenRendering: 1
-  uberReplacementShader: {fileID: 0}
+  width: 640
+  height: 480
+  depth: 24
+  antialiasing: 1
 --- !u!114 &124523595566441502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,3 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FrameID: center_depth_link
+  AdjustXRot: 0
+  AdjustYRot: 90
+  AdjustZRot: 90

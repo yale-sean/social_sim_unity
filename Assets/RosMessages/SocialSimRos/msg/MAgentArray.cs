@@ -8,34 +8,34 @@ using RosMessageTypes.Std;
 
 namespace RosMessageTypes.SocialSimRos
 {
-    public class MPersonEntryArray : Message
+    public class MAgentArray : Message
     {
-        public const string RosMessageName = "social_sim_ros/PersonEntryArray";
+        public const string RosMessageName = "social_sim_ros/AgentArray";
 
-        //  Message defining an array of all people entries
+        //  Message defining an array of all agent entries
         public MHeader header;
         //  Age of the track
-        public MPersonEntry[] people;
-        //  Array containing the entries for the N tracked persons
+        public MAgent[] agents;
+        //  Array containing the entries for the N agents in the current environment
 
-        public MPersonEntryArray()
+        public MAgentArray()
         {
             this.header = new MHeader();
-            this.people = new MPersonEntry[0];
+            this.agents = new MAgent[0];
         }
 
-        public MPersonEntryArray(MHeader header, MPersonEntry[] people)
+        public MAgentArray(MHeader header, MAgent[] agents)
         {
             this.header = header;
-            this.people = people;
+            this.agents = agents;
         }
         public override List<byte[]> SerializationStatements()
         {
             var listOfSerializations = new List<byte[]>();
             listOfSerializations.AddRange(header.SerializationStatements());
             
-            listOfSerializations.Add(BitConverter.GetBytes(people.Length));
-            foreach(var entry in people)
+            listOfSerializations.Add(BitConverter.GetBytes(agents.Length));
+            foreach(var entry in agents)
                 listOfSerializations.Add(entry.Serialize());
 
             return listOfSerializations;
@@ -45,13 +45,13 @@ namespace RosMessageTypes.SocialSimRos
         {
             offset = this.header.Deserialize(data, offset);
             
-            var peopleArrayLength = DeserializeLength(data, offset);
+            var agentsArrayLength = DeserializeLength(data, offset);
             offset += 4;
-            this.people= new MPersonEntry[peopleArrayLength];
-            for(var i = 0; i < peopleArrayLength; i++)
+            this.agents= new MAgent[agentsArrayLength];
+            for(var i = 0; i < agentsArrayLength; i++)
             {
-                this.people[i] = new MPersonEntry();
-                offset = this.people[i].Deserialize(data, offset);
+                this.agents[i] = new MAgent();
+                offset = this.agents[i].Deserialize(data, offset);
             }
 
             return offset;
@@ -59,9 +59,9 @@ namespace RosMessageTypes.SocialSimRos
 
         public override string ToString()
         {
-            return "MPersonEntryArray: " +
+            return "MAgentArray: " +
             "\nheader: " + header.ToString() +
-            "\npeople: " + System.String.Join(", ", people.ToList());
+            "\nagents: " + System.String.Join(", ", agents.ToList());
         }
     }
 }

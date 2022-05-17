@@ -229,6 +229,17 @@ namespace SEAN.Tasks
             playerStart.SetActive(false);
         }
 
+        public void StartNewTask() {
+            if (NewTask())
+            {
+                if (PublishGoal)
+                {
+                    Publish(interactiveGoal);
+                }
+                onNewTask.Invoke();
+            }
+        }
+
         protected virtual void CheckNewTask()
         {
             if (debouce())
@@ -242,14 +253,7 @@ namespace SEAN.Tasks
                     Application.Quit();
 #endif
                 }
-                if (NewTask())
-                {
-                    if (PublishGoal)
-                    {
-                        Publish(interactiveGoal);
-                    }
-                    onNewTask.Invoke();
-                }
+                StartNewTask();
             }
         }
 

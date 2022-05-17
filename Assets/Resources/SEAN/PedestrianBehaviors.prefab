@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 1350850281095980064}
   - component: {fileID: 195949706908237672}
   - component: {fileID: 8989268942507064032}
+  - component: {fileID: 4102165778931384085}
   m_Layer: 0
   m_Name: PedestrianBehaviors
   m_TagString: Untagged
@@ -311,6 +312,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7305eaaff742646dab7e936edc70d3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topicName: /social_sim/agents
+  frame: map
+--- !u!114 &4102165778931384085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504409747876047988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68abe1103fcb2d3d28eb8c8a2f81ab48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   topicName: /social_sim/agent_positions

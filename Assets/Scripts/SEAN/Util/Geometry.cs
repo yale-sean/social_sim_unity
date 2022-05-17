@@ -57,6 +57,15 @@ namespace SEAN.Util
             return mpose;
         }
 
+        public static RosMessageTypes.Geometry.MTwist GetMTwist(Scenario.Trajectory.TrackedTrajectory trajectory)
+        {
+            RosMessageTypes.Geometry.MTwist mtwist = new RosMessageTypes.Geometry.MTwist();
+            // LHS ground plane are: x, z but this conversion already occured in the LinearTrajectory class
+            mtwist.linear = new RosMessageTypes.Geometry.MVector3(trajectory.vector.x, trajectory.vector.y, 0);
+            mtwist.angular = new RosMessageTypes.Geometry.MVector3(0, 0, 0);
+            return mtwist;
+        }
+
         public static float GroundPlaneDist(Vector3 a, Vector3 b)
         {
             Vector3 diff = a - b;

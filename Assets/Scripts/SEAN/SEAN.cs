@@ -29,6 +29,7 @@ namespace SEAN
 
         public bool TopDownViewOnly = false;
         public bool PlayerControl = false;
+        public bool EvaluationMode = false;
 
         private GameObject _SEAN, _Environment, _RobotTasks, _PedestrianBehaviors, _Robots, _Players, _Controllers, _StartAndGoal;
         public Environment.Environment environment { get; private set; }
@@ -56,7 +57,11 @@ namespace SEAN
                 {
                     RosConnectionPort = Int32.Parse(value);
                 }
-                if (args[i] == "-scenario")
+                else if (args[i] == "-evaluation-mode")
+                {
+                    EvaluationMode = true;
+                }
+                else if (args[i] == "-scenario")
                 {
                     SetPedestrianBehavior(value);
                 }

@@ -11,12 +11,12 @@ using Unity.Robotics.ROSTCPConnector;
 namespace SEAN.Scenario.Agents
 {
 
-    public class Publisher : MonoBehaviour
+    public class PositionPublisher : MonoBehaviour
     {
         private ROSConnection ros;
         private SEAN sean;
 
-        public string topicName = "/social_sim/agents";
+        public string topicName = "/social_sim/agent_positions";
         public string frame = "map";
 
         void Start()
@@ -27,18 +27,21 @@ namespace SEAN.Scenario.Agents
 
         private void Update()
         {
-            RosMessageTypes.SocialSimRos.MAgentArray message = new RosMessageTypes.SocialSimRos.MAgentArray();
+            RosMessageTypes.Geometry.MPoseArray message = new RosMessageTypes.Geometry.MPoseArray();
             message.header.frame_id = frame;
             message.header.stamp = sean.clock.LastPublishedTime();
-            message.agents = new RosMessageTypes.SocialSimRos.MAgent[sean.pedestrianBehavior.agents.Length];
-            int i = 0;
+            // Filter out the robot
+            List<Scenario.Trajectory.TrackedAgent> people = new List<Scenario.Trajectory.TrackedAgent>();
             foreach (Trajectory.TrackedAgent person in sean.pedestrianBehavior.agents)
             {
-                RosMessageTypes.SocialSimRos.MAgent agent = new RosMessageTypes.SocialSimRos.MAgent();
-                agent.type = "person";
-                agent.pose = Util.Geometry.GetMPose(person.gameObject.transform);
-                agent.twist = Util.Geometry.GetMTwist(person.trajectory);
-                message.agents[i++] = agent;
+                //if (person is IVI.RobotAgent) { continue; }
+                people.Add(person);
+            }
+            message.poses = new RosMessageTypes.Geometry.MPose[people.Count];
+            int i = 0;
+            foreach (Trajectory.TrackedAgent person in people)
+            {
+                message.poses[i++] = Util.Geometry.GetMPose(person.gameObject.transform);
             }
             ros.Send(topicName, message);
         }

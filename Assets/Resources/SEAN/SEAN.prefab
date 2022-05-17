@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7761232372837294283}
   - component: {fileID: 7761232372837294284}
+  - component: {fileID: 1043156876305609919}
   m_Layer: 0
   m_Name: SEAN
   m_TagString: Untagged
@@ -60,7 +61,21 @@ MonoBehaviour:
   ControlledAgent: 0
   TopDownViewOnly: 0
   PlayerControl: 0
+  EvaluationMode: 0
   RosConnectionPort: 10000
+--- !u!114 &1043156876305609919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7761232372837294282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bbc889df847633c839b2e70c2aab1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TopicTaskNew: /social_sim/control/task/new
 --- !u!1001 &1663170166048616409
 PrefabInstance:
   m_ObjectHideFlags: 0

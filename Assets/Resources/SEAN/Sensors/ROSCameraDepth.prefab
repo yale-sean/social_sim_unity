@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1493298184588145989}
   - component: {fileID: 1493298184588145993}
   - component: {fileID: 1493298184588145990}
-  - component: {fileID: 1493298184588145991}
   - component: {fileID: 124523595566441502}
+  - component: {fileID: 2948436690717999098}
+  - component: {fileID: 2079334186377947655}
   m_Layer: 0
   m_Name: ROSCameraDepth
   m_TagString: Untagged
@@ -85,7 +86,23 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493298184588145986}
   m_Enabled: 0
---- !u!114 &1493298184588145991
+--- !u!114 &124523595566441502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493298184588145986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4d57d54a177420eac8d8a0e67ee569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FrameID: center_depth_optical_frame
+  AdjustXRot: 0
+  AdjustYRot: 90
+  AdjustZRot: 90
+--- !u!114 &2948436690717999098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,14 +115,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Topic: /center_depth
-  FrameId: center_depth_link
+  FrameId: center_depth_optical_frame
   FPS: 15
   EnableOffscreenRendering: 1
   width: 640
   height: 480
-  depth: 24
+  depth: 32
   antialiasing: 1
---- !u!114 &124523595566441502
+--- !u!114 &2079334186377947655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,5 +136,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FrameID: center_depth_link
   AdjustXRot: 0
-  AdjustYRot: 90
-  AdjustZRot: 90
+  AdjustYRot: 0
+  AdjustZRot: 0

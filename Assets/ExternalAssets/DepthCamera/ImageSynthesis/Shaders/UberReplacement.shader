@@ -26,17 +26,26 @@ inline float Linear01FromEyeToLinear01FromNear(float depth01)
     return (depth01 - near/far) * (1 + near/far);
 }
 
+// From UnityCG.cginc
+// Encoding/decoding [0..1) floats into 8 bit/channel RGBA. Note that 1.0 will not be encoded properly.
+inline float4 MyEncodeFloatRGBA( float v )
+{
+    float4 kEncodeMul = float4(1.0, 255.0, 65025.0, 160581375.0);
+    float kEncodeBit = 1.0/255.0;
+    float4 enc = kEncodeMul * v;
+    enc = frac (enc);
+    enc -= enc.yzww * kEncodeBit;
+    return enc;
+}
+// Decode with:
+//inline float DecodeFloatRGBA( float4 enc )
+//{
+//    float4 kDecodeDot = float4(1.0, 1/255.0, 1/65025.0, 1/160581375.0);
+//    return dot( enc, kDecodeDot );
+//}
+
 float4 Output(float depth01, float3 normal)
 {
-    /* see ImageSynthesis.cs
-    enum ReplacelementModes {
-        ObjectId       = 0,
-        CatergoryId      = 1,
-        DepthCompressed    = 2,
-        DepthMultichannel  = 3,
-        Normals        = 4
-    };*/
-
     if (_OutputMode == 0) // ObjectId
     {
         return _ObjectColor;
@@ -53,18 +62,7 @@ float4 Output(float depth01, float3 normal)
     }
     else if (_OutputMode == 3) // DepthMultichannel
     {
-        float lowBits = floor(depth01 * 256) / 256;
-        float medBits = 256 * (depth01 - lowBits);
-        medBits = floor(256 * medBits) / 256;
-        float highBits = 256 * 256 * (depth01 - lowBits - medBits / 256);
-        highBits = floor(256 * highBits) / 256;
-        float higherBits = 256 * 256 * 256 * (depth01 - lowBits - medBits - highBits / 256);
-        higherBits = floor(256 * higherBits) / 256;
-        return float4(lowBits, medBits, highBits, higherBits);
-
-        //float lowBits = frac(depth01 * 256);
-        //float highBits = depth01 - lowBits / 256;
-        //return float4(lowBits, highBits, depth01, 1);
+        return MyEncodeFloatRGBA(depth01);
     }
     else if (_OutputMode == 4) // Normals
     {

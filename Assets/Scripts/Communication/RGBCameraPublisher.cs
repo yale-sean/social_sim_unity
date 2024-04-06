@@ -14,7 +14,7 @@ public class RGBCameraPublisher : BaseCameraPublisher
     private Texture2D texturePixels;
     private Camera offscreenCamera;
 
-    void Start()
+    new void Start()
     {
         base.Start();
         //print("SystemInfo.supportsAsyncGPUReadback: " + SystemInfo.supportsAsyncGPUReadback);
